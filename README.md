@@ -1,24 +1,23 @@
 # low-light-engine
 Welcome to the *Low Light Game Engine*! This is a hobby project developed by [me](link.com). I post regular dev/study logs on my [blog](link.com), where I go into detail about implementing new features in the engine.  
 
+
 > ⚠ **Stability Notice:**  
 > This is an **experimental** hobby project. It is **not yet ready** for serious game development and is **very feature-incomplete**. Expect frequent changes and breaking updates.  
 
----
 
 ## Overview
 I am building my engine on top of the [G3D Innovation Engine](https://casual-effects.com/g3d/www/index.html). G3D is a commercial-grade 3D rendering engine that I will be using for mainly for it's rendering capabilities. 
 
 I will be building all of my systems around this rendering framework and plan to eventually change a lot about the renderer as well.
 
----
 
 ## Key Features
 - **Custom Game Loop:** A flexible game loop (supporting both fixed and variable time steps).
 - **Advanced Rendering:** Utilize G3D’s real-time rendering, deferred shading, and even ray tracing features.
 
 *(More features coming soon!)*  
----
+
 
 ## Compilation Workarounds & Modifications
  While integrating G3D, I had to make a few modifications:
@@ -59,7 +58,6 @@ This engine is built on the G3D Innovation Engine (licensed under the OSI-approv
 - **fmod** – *Excluded from repository* (FMOD Sound System requires proper licensing and attribution)  
 - **OptiX** – NVIDIA DesignWorks License
 
----
 
 ## Contributing
 
@@ -69,14 +67,12 @@ Ways to contribute:
 - Suggest features or optimizations
 - Submit pull requests with improvements or new documentation
 
----
 
 ## Acknowledgments
 
 - **G3D Innovation Engine:**  
   Developed by Morgan McGuire, Michael Mara, and Zander Majercik.
   
----
 
 ## License
 

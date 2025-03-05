@@ -1,0 +1,141 @@
+// -*- c++ -*-
+{
+    name = "Space",
+   
+    models = {
+        asteroid0Model = #include("model/rock/rock_01.ArticulatedModel.Any");
+        asteroid1Model = #include("model/rock/rock_02.ArticulatedModel.Any");
+        asteroid2Model = #include("model/rock/rock_03.ArticulatedModel.Any");
+        asteroid3Model = #include("model/rock/rock_04.ArticulatedModel.Any");
+        asteroid4Model = #include("model/rock/rock_05.ArticulatedModel.Any");
+
+        shipModel = #include("model/spaceFighter/spaceFighter01.ArticulatedModel.Any");
+
+        beaconModel = ArticulatedModel::Specification {
+            filename = "cube/cube.obj";
+        };
+
+        smokeModel = ParticleSystemModel::Emitter::Specification { 
+            initialDensity = 0; 
+            material = "material/smoke/smoke.png";
+            shape = Sphere(1);
+            rateCurve = 3000;
+            location = VOLUME;
+            particleLifetimeMean = 1;
+            particleLifetimeVariance = 0.2;
+            radiusMean = 1;
+            radiusVariance = 0.05;
+            coverageFadeInTime = 0.05;
+            coverageFadeOutTime = 0.75;
+            noisePower = 0;
+            velocityMagnitudeMean = 20;
+            velocityDirectionMean = Vector3(0,0,1);
+            angularVelocityMean = 0;
+            angularVelocityVariance = 0.25;
+        }; 
+    };
+    
+    lightingEnvironment = LightingEnvironment {
+        ambientOcclusionSettings = AmbientOcclusionSettings { 
+            enabled = false;
+        };
+
+        environmentMap = 
+            Texture::Specification {
+                encoding = "SRGB8";
+                filename = "cubemap/hipshot_m9_sky/16_*.png";
+                encoding = Texture::Encoding {
+                    readMultiplyFirst = 1.5;
+                };
+            };
+    };
+    
+    entities = {
+
+        beacon = VisibleEntity {
+            model = "beaconModel";
+            frame = CFrame::fromXYZYPRDegrees(-2, 0, -300, 45, 30);
+            track = PhysicsFrameSpline{
+                        control = [
+                            CFrame::fromXYZYPRRadians(-2, 0, -300, 0, 0, 30),
+                            CFrame::fromXYZYPRRadians(-2, 0, 40, 0, 135, -135)
+                        ];
+
+                        time = [
+                            0,
+                            20
+                        ];
+
+                        extrapolationMode = CYCLIC;
+                        interpolationMode = LINEAR;
+                        finalInterval = 0;
+                    };
+        };
+
+        beaconSound = SoundEntity {
+            sound = Sound {
+                filename = "sound/2443__equallyunequal__rumblesqueal.wav";
+                loop = true;
+            };
+            volume = 3.0;
+            track = entity("beacon");
+        };
+        
+        sun = Light { 
+            attenuation = ( 0, 0, 1 ); 
+            bulbPower = Power3(4e+006,4e+006,2e+006 ); 
+            shadowsEnabled = true; 
+            canChange = false;
+            enabled = true; 
+			shadowMapBias = 0.05;
+            frame = CFrame::fromXYZYPRDegrees(-15.6, 207.8, -42.0, -8.0, -74.0, -78.8);
+            nearPlaneZLimit = -170;
+            producesDirectIllumination = true; 
+            producesIndirectIllumination = true; 
+            shadowMapSize = Vector2int16(1024, 1024); 
+            spotHalfAngleDegrees = 40; 
+            rectangular = true; 
+            type = "SPOT"; 
+        }; 
+        
+
+        player = PlayerEntity {
+            model = "shipModel";
+        };
+
+        rocketTrail = ParticleSystem {
+            canChange = true; 
+            track = entity("player"); 
+            model = "smokeModel";
+            particlesAreInWorldSpace = true;
+        }; 
+        
+        camera = Camera {
+            frame = CFrame::fromXYZYPRDegrees(0.0f,   0,   15);
+        
+            depthOfFieldSettings = DepthOfFieldSettings {
+                model = "ARTIST";
+                enabled = false;
+                nearSharpPlaneZ = -1.5;
+            };
+
+            motionBlurSettings = MotionBlurSettings {
+                enabled = true;
+                exposureFraction = 1.0;
+            };
+            
+            filmSettings = FilmSettings { 
+                antialiasingEnabled = true; 
+                temporalAntialiasingEnabled = false; 
+            };
+
+            projection = Projection {
+                nearPlaneZ = -0.2;
+                farPlaneZ = -400;
+                fovDirection = "VERTICAL";
+                fovDegrees = 50;
+            }
+        };
+    };
+        
+}

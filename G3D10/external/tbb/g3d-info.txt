@@ -1,0 +1,11 @@
+Intel TBB 2019 Update 9
+Updated November 19, 2019
+
+1. Cloned from https://github.com/intel/tbb 
+2. Visual studio project file from build/vs2013 upgraded to VS2017 and switched from Dynamic Library to Static Library presets.
+3. Deleted (to reduce size):
+   python/
+   examples/
+   doc/
+   all files and directories with "test" in the name, recursively
+   

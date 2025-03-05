@@ -1,0 +1,5 @@
+The controller models are cleaned up from the SteamVR (which G3D uses) reference models at:
+
+C:\Program Files (x86)\Steam\steamapps\common\SteamVR\resources\rendermodels\
+
+The hand and torso models for the default avatar were created byt he G3D team and are released ("CC0") into the public domain.

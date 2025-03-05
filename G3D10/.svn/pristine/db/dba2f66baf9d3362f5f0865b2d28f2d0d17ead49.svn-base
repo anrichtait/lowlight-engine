@@ -1,0 +1,4 @@
+ArticulatedModel::Specification {
+//    scale = 0.01;
+    filename = "steam.zip/generic_controller.obj";
+}

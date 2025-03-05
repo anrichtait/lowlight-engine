@@ -1,0 +1,7 @@
+#version 310 es
+
+uniform sampler2D texture;
+out lowp vec4 color;
+void main() {
+    color = texelFetch(texture, ivec2(gl_FragCoord.xy), 0);
+}

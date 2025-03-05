@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{48E89870-D5FB-4962-BB37-6DDA34DE3BDA}</ProjectGuid>
+    <RootNamespace>G3Dgfxlib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\g3d-library-debug.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\g3d-library-release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>G3D-gfxd</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>G3D-gfx</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\glew.lib\include;$(SolutionDir)..\external\assimp.lib\include;$(SolutionDir)..\external\enet.lib\include;$(SolutionDir)..\external\glfw.lib\include;$(SolutionDir)..\external\nfd.lib\include;$(SolutionDir)..\external\zip.lib\include;$(SolutionDir)..\external\zlib.lib\include;$(SolutionDir)..\external\civetweb.lib\include;$(SolutionDir)../external/tbb/include;$(SolutionDir)../external/fmod/include;$(SolutionDir)../external\ffmpeg\win64\include;$(SolutionDir)../external/embree/include;$(SolutionDir)../G3D-base.lib/include;$(SolutionDir)../external/openvr/include;$(SolutionDir)../G3D-app.lib/include;$(SolutionDir)../G3D-gfx.lib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <Lib />
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\external\glew.lib\include;$(SolutionDir)..\external\assimp.lib\include;$(SolutionDir)..\external\enet.lib\include;$(SolutionDir)..\external\glfw.lib\include;$(SolutionDir)..\external\nfd.lib\include;$(SolutionDir)..\external\zip.lib\include;$(SolutionDir)..\external\zlib.lib\include;$(SolutionDir)..\external\civetweb.lib\include;$(SolutionDir)../external/tbb/include;$(SolutionDir)../external/fmod/include;$(SolutionDir)../external\ffmpeg\win64\include;$(SolutionDir)../external/embree/include;$(SolutionDir)../G3D-base.lib/include;$(SolutionDir)../external/openvr/include;$(SolutionDir)../G3D-app.lib/include;$(SolutionDir)../G3D-gfx.lib/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <Lib />
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Args.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\AttributeArray.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\AudioDevice.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\BindlessTextureHandle.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\BufferTexture.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\CPUVertexArray.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\DXCaps.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Framebuffer.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\G3D-gfx.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GazeTracker.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\getOpenGLState.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GEvent.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GKey.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\glcalls.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GLCaps.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\glFormat.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GLFWWindow.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\glheaders.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GLPixelTransferBuffer.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\GLSamplerObject.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Milestone.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\MonitorXR.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\OpenVR.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\OSWindow.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Profiler.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\RenderDevice.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Sampler.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Shader.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\tesselate.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\Texture.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\UniformTable.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\VertexBuffer.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\VideoStream.h" />
+    <ClInclude Include="..\G3D-gfx.lib\include\G3D-gfx\XR.h" />
+    <ClInclude Include="..\G3D-gfx.lib\source\directinput8.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\G3D-gfx.lib\source\Args.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\AttributeArray.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\AudioDevice.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\BindlessTextureHandle.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\BufferTexture.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\CPUVertexArray.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\DXCaps.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Framebuffer.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\getOpenGLState.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GEvent.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GKey.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\glcalls.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GLCaps.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\glenumtostring.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GLFWWindow.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GLPixelTransferBuffer.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\GLSamplerObject.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\initGLG3D.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Milestone.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\MonitorXR.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\OpenVR.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\OSWindow.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Profiler.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\RenderDevice.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Sampler.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Shader.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Shader_preprocessor.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Shader_ShaderProgram.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\tesselate.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Texture.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Texture_Preprocess.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Texture_Specification.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\Texture_Visualization.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\UniformTable.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\VertexBuffer.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\VideoStream.cpp" />
+    <ClCompile Include="..\G3D-gfx.lib\source\XR.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\G3D-gfx.lib\source\CocoaSetIcon.mm" />
+    <None Include="..\G3D-gfx.lib\source\NSAutoreleasePoolWrapper.mm" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

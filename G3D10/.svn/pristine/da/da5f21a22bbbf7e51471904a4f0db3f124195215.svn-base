@@ -1,0 +1,810 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1A4CC9C5-D693-4ADA-9866-E8ED97FDF0A0}</ProjectGuid>
+    <RootNamespace>freeimagelib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\external-library-debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\external-library-release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(ProjectDir)\..\build\lib\</OutDir>
+    <TargetName>freeimaged</TargetName>
+    <IntDir>$(ProjectDir)\..\temp\$(ProjectName)\$(Configuration)\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>freeimage</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>FREEIMAGE_LIB;USE_JPIP;OPJ_STATIC;LIBRAW_NODLL;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>../external/zlib.lib/include;../external/freeimage.lib/include;../external/freeimage.lib/source;../external/freeimage.lib/source/LibJPEG;../external/freeimage.lib/source/LibOpenJPEG;../external/freeimage.lib/source/OpenEXR;../external/freeimage.lib/source/OpenEXR/Half;../external/freeimage.lib/source/OpenEXR/IlmImf;../external/freeimage.lib/source/OpenEXR/Imath;../external/freeimage.lib/source/OpenEXR/Iex;../external/freeimage.lib/source/OpenEXR/IexMath;../external/freeimage.lib/source/OpenEXR/IlmThread;../external/freeimage.lib/source/LibRawLite;../external/freeimage.lib/source/LibWebP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copying Headers</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>../external/zlib.lib/include;../external/freeimage.lib/include;../external/freeimage.lib/source;../external/freeimage.lib/source/LibJPEG;../external/freeimage.lib/source/LibOpenJPEG;../external/freeimage.lib/source/OpenEXR;../external/freeimage.lib/source/OpenEXR/Half;../external/freeimage.lib/source/OpenEXR/IlmImf;../external/freeimage.lib/source/OpenEXR/Imath;../external/freeimage.lib/source/OpenEXR/Iex;../external/freeimage.lib/source/OpenEXR/IexMath;../external/freeimage.lib/source/OpenEXR/IlmThread;../external/freeimage.lib/source/LibRawLite;../external/freeimage.lib/source/LibWebP;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FREEIMAGE_LIB;USE_JPIP;OPJ_STATIC;LIBRAW_NODLL;WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Copying Headers</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\freeimage.lib\include\FreeImage.h" />
+    <ClInclude Include="..\external\freeimage.lib\include\FreeImagePlus.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\FreeImageToolkit\Filters.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\FreeImageToolkit\Resize.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\FreeImage\J2KHelper.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\FreeImage\PSDParser.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jconfig.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jdct.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jerror.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jinclude.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jmemsys.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jmorecfg.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jpegint.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jpeglib.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\jversion.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibJPEG\transupp.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\bio.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\cio.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\dwt.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\event.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\fix.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\function_list.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\image.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\indexbox_manager.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\int.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\invert.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\j2k.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\jp2.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\mct.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\mqc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\openjpeg.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_clock.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_codec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_config.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_config_private.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_includes.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_intmath.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_inttypes.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_malloc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_stdint.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\pi.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\raw.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\t1.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\t2.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\tcd.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibOpenJPEG\tgt.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\png.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pngconf.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pngdebug.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pnginfo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pnglibconf.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pngpriv.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibPNG\pngstruct.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\t4.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiff.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffconf.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffconf.vc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffconf.wince.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffio.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffio.hxx" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffiop.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tiffvers.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_config.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_config.vc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_config.wince.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_dir.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_fax3.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\tif_predict.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibTIFF4\uvcode.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\alphai_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\common_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\vp8i_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\vp8li_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\vp8_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dec\webpi_dec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\common_sse2.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\common_sse41.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dsp.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_common.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\mips_macro.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\msa_macro.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\neon.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\enc\backward_references_enc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\enc\cost_enc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\enc\histogram_enc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\enc\vp8i_enc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\enc\vp8li_enc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\mux\animi.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\mux\muxi.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\bit_reader_inl_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\bit_reader_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\bit_writer_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\color_cache_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\endian_inl_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\filters_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\huffman_encode_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\huffman_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\quant_levels_dec_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\quant_levels_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\random_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\rescaler_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\thread_utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\utils\utils.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\decode.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\demux.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\encode.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\format_constants.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\mux.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\mux_types.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\LibWebP\src\webp\types.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\Metadata\FIRational.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\Metadata\FreeImageTag.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Half\half.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IexMath\IexMathFloatExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IexMath\IexMathFpu.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IexMath\IexMathIeeeExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\Iex.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexBaseExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexErrnoExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexExport.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexForward.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexMacros.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexMathExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexNamespace.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexThrowErrnoExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmBaseConfig.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfAcesFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfArray.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfAutoArray.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfB44Compressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfBoxAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChannelList.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChannelListAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCheckedArithmetic.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChromaticities.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChromaticitiesAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompositeDeepScanLine.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompression.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompressionAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfConvert.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCRgbaFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepCompositing.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepFrameBuffer.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepImageState.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepImageStateAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineInputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineOutputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledInputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledOutputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDoubleAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDwaCompressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDwaCompressorSimd.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfEnvmap.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfEnvmapAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfExport.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFastHuf.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFloatAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFloatVectorAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfForward.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFrameBuffer.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFramesPerSecond.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfGenericInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfGenericOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfHeader.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfHuf.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputPartData.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputStreamMutex.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInt64.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfIntAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfIO.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfKeyCode.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfKeyCodeAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfLineOrder.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfLineOrderAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfLut.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMatrixAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMisc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiPartInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiPartOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiView.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfName.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfNamespace.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOpaqueAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOptimizedPixelReading.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputPartData.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputStreamMutex.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPartHelper.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPartType.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPixelType.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPizCompressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPreviewImage.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPreviewImageAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPxr24Compressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRational.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRationalAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRgba.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRgbaFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRgbaYca.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRle.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRleCompressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfScanLineInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfSimd.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStandardAttributes.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStdIO.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStringAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStringVectorAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfSystemSpecific.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTestFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfThreading.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTileDescription.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTileDescriptionAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledInputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledInputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledMisc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledOutputFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledOutputPart.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledRgbaFile.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTileOffsets.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTimeCode.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTimeCodeAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfVecAttribute.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfVersion.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfWav.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfXdr.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfZip.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfZipCompressor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThread.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadExport.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadForward.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadMutex.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadPool.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadSemaphore.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathBox.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathBoxAlgo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathColor.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathColorAlgo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathEuler.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathExc.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathExport.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathForward.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathFrame.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathFrustum.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathFrustumTest.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathFun.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathGL.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathGLU.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathHalfLimits.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathInt64.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathInterval.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathLimits.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathLine.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathLineAlgo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathMath.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathMatrix.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathMatrixAlgo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathNamespace.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathPlane.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathPlatform.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathQuat.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathRandom.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathRoots.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathShear.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathSphere.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathVec.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathVecAlgo.h" />
+    <ClInclude Include="..\external\freeimage.lib\source\OpenEXR\OpenEXRConfig.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipImage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipMemoryIO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipMetadataFind.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipMultiPage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipTag.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\fipWinImage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImagePlus\FreeImagePlus.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Background.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\BSplineRotate.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Channels.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\ClassicRotate.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Colors.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\CopyPaste.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Display.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Flip.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\JPEGTransform.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\MultigridPoissonSolver.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Rescale.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImageToolkit\Resize.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\BitmapAccess.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\CacheFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ColorLookup.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion16_555.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion16_565.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion24.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion32.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion4.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Conversion8.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionFloat.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionRGB16.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionRGBA16.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionRGBAF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionRGBF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionType.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ConversionUINT16.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\FreeImage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\FreeImageC.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\FreeImageIO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\GetType.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Halftoning.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\J2KHelper.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\LFPQuantizer.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\MemoryIO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\MNGHelper.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\MultiPage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\NNQuantizer.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PixelAccess.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\Plugin.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginBMP.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginCUT.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginDDS.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginEXR.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginG3.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginGIF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginHDR.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginICO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginIFF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginJ2K.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginJNG.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginJP2.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginJPEG.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginKOALA.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginMNG.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPCD.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPCX.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPFM.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPICT.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPNG.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPNM.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginPSD.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginRAS.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginSGI.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginTARGA.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginTIFF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginWBMP.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginWebP.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginXBM.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PluginXPM.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\PSDParser.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\TIFFLogLuv.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\tmoColorConvert.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\tmoDrago03.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\tmoFattal02.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\tmoReinhard05.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ToneMapping.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\WuQuantizer.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\FreeImage\ZLibInterface.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jaricom.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcapimin.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcapistd.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcarith.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jccoefct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jccolor.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcdctmgr.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jchuff.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcinit.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcmainct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcmarker.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcmaster.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcomapi.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcparam.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcprepct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jcsample.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jctrans.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdapimin.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdapistd.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdarith.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdatadst.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdatasrc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdcoefct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdcolor.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jddctmgr.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdhuff.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdinput.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdmainct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdmarker.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdmaster.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdmerge.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdpostct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdsample.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jdtrans.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jerror.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jfdctflt.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jfdctfst.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jfdctint.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jidctflt.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jidctfst.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jidctint.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jmemmgr.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jmemnobs.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jquant1.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jquant2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\jutils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibJPEG\transupp.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\bio.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\cio.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\dwt.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\event.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\function_list.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\image.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\invert.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\j2k.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\jp2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\mct.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\mqc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\openjpeg.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\opj_clock.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\pi.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\raw.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\t1.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\t2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\tcd.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibOpenJPEG\tgt.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\png.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngerror.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngget.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngmem.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngpread.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngread.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngrio.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngrtran.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngrutil.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngset.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngtrans.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngwio.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngwrite.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngwtran.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibPNG\pngwutil.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_aux.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_close.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_codec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_color.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_compress.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_dir.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_dirinfo.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_dirread.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_dirwrite.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_dumpmode.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_error.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_extension.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_fax3.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_fax3sm.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_flush.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_getimage.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_jpeg.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_luv.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_lzma.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_lzw.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_next.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_ojpeg.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_open.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_packbits.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_pixarlog.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_predict.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_print.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_read.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_strip.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_swab.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_thunder.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_tile.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_version.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_warning.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_write.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibTIFF4\tif_zip.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\alpha_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\buffer_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\frame_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\idec_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\io_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\quant_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\tree_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\vp8l_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\vp8_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dec\webp_dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\demux\anim_decode.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\demux\demux.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\alpha_processing.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\alpha_processing_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\alpha_processing_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\alpha_processing_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\alpha_processing_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\cost.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\cost_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\cost_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\cost_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\cpu.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_clip_tables.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\dec_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_avx2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\enc_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\filters.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\filters_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\filters_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\filters_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\filters_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_enc_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\lossless_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\rescaler_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\ssim.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\ssim_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling_msa.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\upsampling_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv_mips32.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv_mips_dsp_r2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv_neon.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv_sse2.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\dsp\yuv_sse41.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\alpha_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\analysis_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\backward_references_cost_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\backward_references_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\config_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\cost_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\filter_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\frame_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\histogram_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\iterator_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\near_lossless_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\picture_csp_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\picture_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\picture_psnr_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\picture_rescale_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\picture_tools_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\predictor_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\quant_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\syntax_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\token_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\tree_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\vp8l_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\enc\webp_enc.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\mux\anim_encode.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\mux\muxedit.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\mux\muxinternal.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\mux\muxread.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\bit_reader_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\bit_writer_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\color_cache_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\filters_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\huffman_encode_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\huffman_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\quant_levels_dec_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\quant_levels_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\random_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\rescaler_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\thread_utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\LibWebP\src\utils\utils.c" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\Exif.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\FIRational.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\FreeImageTag.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\IPTC.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\TagConversion.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\TagLib.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\Metadata\XTIFF.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Half\half.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IexMath\IexMathFloatExc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IexMath\IexMathFpu.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexBaseExc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Iex\IexThrowErrnoExc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfAcesFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfB44Compressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfBoxAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChannelList.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChannelListAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChromaticities.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfChromaticitiesAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompositeDeepScanLine.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompressionAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCompressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfConvert.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfCRgbaFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepCompositing.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepFrameBuffer.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepImageStateAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineInputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepScanLineOutputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledInputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDeepTiledOutputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDoubleAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfDwaCompressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfEnvmap.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfEnvmapAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFastHuf.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFloatAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFloatVectorAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFrameBuffer.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfFramesPerSecond.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfGenericInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfGenericOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfHeader.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfHuf.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfInputPartData.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfIntAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfIO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfKeyCode.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfKeyCodeAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfLineOrderAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfLut.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMatrixAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMisc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiPartInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiPartOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfMultiView.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOpaqueAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfOutputPartData.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPartType.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPizCompressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPreviewImage.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPreviewImageAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfPxr24Compressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRational.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRationalAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRgbaFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRgbaYca.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRle.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfRleCompressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfScanLineInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStandardAttributes.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStdIO.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStringAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfStringVectorAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfSystemSpecific.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTestFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfThreading.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTileDescriptionAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledInputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledInputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledMisc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledOutputFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledOutputPart.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTiledRgbaFile.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTileOffsets.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTimeCode.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfTimeCodeAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfVecAttribute.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfVersion.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfWav.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfZip.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmImf\ImfZipCompressor.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThread.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadMutex.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadPool.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\IlmThread\IlmThreadSemaphore.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathBox.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathColorAlgo.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathExc.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathFun.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathMatrixAlgo.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathRandom.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathShear.cpp" />
+    <ClCompile Include="..\external\freeimage.lib\source\OpenEXR\Imath\ImathVec.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\external\freeimage.lib\source\LibJPEG\jconfig.txt" />
+    <Text Include="..\external\freeimage.lib\source\LibJPEG\structure.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\external\freeimage.lib\source\LibPNG\png.5" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

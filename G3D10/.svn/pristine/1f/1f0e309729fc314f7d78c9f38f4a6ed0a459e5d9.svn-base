@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\civetweb.lib\include\civetweb.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\external\civetweb.lib\include\CivetServer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\civetweb.lib\source\CivetServer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\external\civetweb.lib\source\civetweb.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\external\civetweb.lib\source\CMakeLists.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\external\civetweb.lib\source\handle_form.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\md5.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\mod_duktape.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\mod_lua.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\mod_lua_shared.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\mod_zlib.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\sha1.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\timer.inl">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="..\external\civetweb.lib\source\wolfssl_extras.inl">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,46 @@
+#version 410 or 420
+
+#include <g3dmath.glsl>
+#include <Camera/Camera.glsl>
+
+#expect PROJECTION_ALGORITHM "enum"
+#define PLANAR     0
+#define SPHERICAL  1
+#define LENSLET    2
+
+uniform Camera          camera;
+
+out float4              rayOrigin;
+out float4              rayDirection;
+
+void main() {
+    float csEyeRayDirectionZ;
+    Ray eyeRay;
+    
+#   if PROJECTION_ALGORITHM == PLANAR
+        eyeRay = worldRay(gl_FragCoord.xy, camera.frame, camera.projInfo, csEyeRayDirectionZ); 
+#   elif PROJECTION_ALGORITHM == SPHERICAL
+        vec2 angle = pi * (gl_FragCoord.xy - g3d_FragCoordExtent / 2) / g3d_FragCoordExtent.x;
+        vec3 dir   = normalize(vec3(sin(angle.x), -sin(angle.y) * cos(angle.x), -cos(angle.x) * cos(angle.y)));
+        eyeRay.direction = camera.frame * vec4(dir, 0);
+        eyeRay.origin    = camera.frame * vec4(0,0,0,1);
+#   else // LENSLET
+        const float NUM_LENSES = 6;
+        const float BASELINE = 8;
+        vec2 unitCoord = (gl_FragCoord.xy - g3d_FragCoordExtent / 2) / g3d_FragCoordExtent.x;
+        float2 lensCenter = round(unitCoord * NUM_LENSES) / NUM_LENSES;
+        float2 lensCoord = (unitCoord - lensCenter) * NUM_LENSES;
+        vec2 angle = pi * lensCoord;
+        vec3 dir   = normalize(vec3(sin(angle.x), -sin(angle.y) * cos(angle.x), -cos(angle.x) * cos(angle.y)));
+        eyeRay.direction = camera.frame * vec4(dir, 0);
+        eyeRay.origin    = camera.frame * vec4(lensCenter * BASELINE, 0, 1);
+#   endif
+
+    rayOrigin.xyz = eyeRay.origin;
+    // Min distance
+    rayOrigin.w = 0;
+
+    rayDirection.xyz = eyeRay.direction;
+    // Max distance
+    rayDirection.w = inf;
+}

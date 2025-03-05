@@ -1,0 +1,35 @@
+#version 330
+#extension GL_ARB_conservative_depth : enable
+
+#ifdef GL_ARB_conservative_depth
+    layout (depth_greater) out float gl_FragDepth;
+#endif
+
+uniform int iFrame;
+uniform ivec2 activeQuad;
+uniform int mask;
+
+void main() {
+    ivec2 C = ivec2(gl_FragCoord.xy);
+
+    // Block index. Strangely, 4x1 is the same speed as 4x2 on GeForce 1080, but 
+    // other sizes with 4-8 pixels are slower.
+    ivec2 B = ivec2((C.x >> 2) & mask, (C.y >> 0) & mask);
+
+    // Stripes
+//    if (((Q.x + Q.y + iFrame) & 63) != 0) {
+
+    if ((activeQuad.x != B.x) || (activeQuad.y != B.y)) {
+        // Intentionally fail the depth test, leaving stencil unmodified
+        gl_FragDepth = 1;
+    }
+
+    /*
+    if (C.x > 256 || C.y > 256) {
+        //gl_FragDepth = 1;
+    }
+
+    // Everything
+    if (C.x < 0) { gl_FragDepth = 1; }
+    */
+}

@@ -1,0 +1,11 @@
+in vec2 vertexUV;
+
+varying out vec4 f_color;
+varying out vec2 UV;
+
+void main()
+{
+    f_color     = gl_Color;
+    gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;
+    UV          = vertexUV;
+}

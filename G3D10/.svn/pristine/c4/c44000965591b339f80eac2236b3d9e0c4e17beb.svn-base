@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ImportGroup Label="PropertySheets">
+    </ImportGroup>
+    <PropertyGroup Label="UserMacros" />
+	<PropertyGroup><IncludePath>$(g3d)\G3D10\external\ffmpeg\win64\include;$(g3d)\G3D10\external\glslang;$(g3d)\G3D10\external\vulkan\include;$(g3d)\G3D10\external\assimp.lib\include;$(g3d)\G3D10\external\civetweb.lib\include;$(g3d)\G3D10\external\enet.lib\include;$(g3d)\G3D10\external\wave.lib\include;$(g3d)\G3D10\external\freeimage.lib\include;$(g3d)\G3D10\external\glew.lib\include;$(g3d)\G3D10\external\glfw.lib\include;$(g3d)\G3D10\external\nfd.lib\include;$(g3d)\G3D10\external\qrencode.lib\include;$(g3d)\G3D10\external\zip.lib\include;$(g3d)\G3D10\external\zlib.lib\include;$(g3d)\G3D10\external\openvr\include;$(g3d)\G3D10\external\physx\include;$(g3d)\G3D10\G3D-base.lib\include;$(g3d)\G3D10\G3D-gfx.lib\include;$(g3d)\G3D10\G3D-app.lib\include;$(g3d)\G3D10\GLG3DVR.lib\include;$(g3d)\G3D10\external\tbb\include;$(g3d)\G3D10\external\python\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(g3d)\G3D10\build\lib;$(LibraryPath)</LibraryPath>
+    </PropertyGroup>
+    </Project>
+

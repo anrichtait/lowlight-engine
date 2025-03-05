@@ -1,0 +1,146 @@
+                   **waveVK.lib Development Journal**
+
+2023-03-16: waveVK.lib handoff
+=============================================================
+Sponza now works in Release mode.
+Other scenes have some missing geometry, I think because of a dependence on texture in the Universal Material.
+
+Limitations:
+- Only works with UniversalMaterial with a texture (not a G3D created readMultiplyFirst texture) in the material slots. Not all slots need to be populated.
+- No dynamic scene updates.
+
+Replace line 131 of main.cpp in primaryRayTrace with:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+scene()->tritree(Scene::TriTreeGPUAPI::VULKAN)->intersectRays(m_rayOriginTexture, m_rayDirectionTexture, m_gbuffer);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+to run with the VulkanTriTree backend. 
+I also recommend setting a dependency between primaryRayTrace and waveVK.lib when debugging so waveVK.lib rebuilds automatically.
+
+
+
+2023-02-28: waveVK.lib handoff
+=============================================================
+Previous dependencies have been removed. Everything needed should be in G3D.
+
+VulkanTriTree can be selected by passing `true` when querying the scene for the tritree
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+scene()->tritree(true)->intersectRays(m_rayOriginTexture, m_rayDirectionTexture, m_gbuffer);
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Currently throwing on the call to `vkCreateRayTracingPipelinesNV`.
+
+This horrible bug was caused by the codesize passed during shader creation getting the size in unsigned ints but
+expecting the size in bytes. Caught by the enabled validation layer.
+
+
+
+2021-08-08: Build instructions for based.lib and base.lib
+=============================================================
+Clone this repository: https://github.com/ZanderMajercik/Vulkan
+Build it using CMake in the root directory. This can be done with cmake GUI:
+- Navigate to the root dir in CMAKE GUI
+- create a build dir
+- configure, configure again, followed by generating (after selecting the correct VS build tools).
+- The "base" project file should automatically link against G3D GL. If you would like to link against a different GL checkout, change the include directory in the "base" project file.
+- Build base in debug (based.lib) and release mode (base.lib)
+
+
+2020-09-18: Feature parity wave.lib TODO
+=============================================================
+[ ] Fix material bug in Cornell Box related to texture bias and scale. There are constant color textures created on the fly in G3D that
+    are just a scale and bias. These textures are not rendering correctly in waveVk.lib.
+[ ] Implement updating transforms in the TLAS.
+[ ] Implement creating and removing objects in the TLAS.
+[ ] waveVK.lib produces same images as wave.lib with dynamic geometry and lights.
+[ ] Implement geometry caching after wave.lib
+[ ] Implement material caching after wave.lib.
+[ ] waveVK.lib produces same image as wave.lib and has the same C++ optimizations.
+
+Cleanup:
+[ ] Separate shared resource vector from named resources. Keep it only for correctly destroying resources.
+
+2020-03-31: Feature parity wave.lib TODO
+=============================================================
+
+[ ] Fix material bug in Cornell Box.
+[ ] Implement updating transforms in the TLAS.
+[ ] Implement creating and removing objects in the TLAS.
+[ ] waveVK.lib produces same images as wave.lib with dynamic geometry and lights.
+[ ] Implement geometry caching after wave.lib
+[ ] Implement material caching after wave.lib.
+[ ] waveVK.lib produces same image as wave.lib and has the same C++ optimizations.
+
+Cleanup:
+[ ] Separate shared resource vector from named resources. Keep it only for correctly destroying resources.
+
+
+2020-03-24: Feature parity wave.lib TODO
+=============================================================
+
+Goal is feature parity by 4/3.
+
+[x] Implement alpha testing with an anyhit shader.
+[x] waveVK.lib produces same image as primaryRayTrace for a static scene
+
+2020-03-19: Material Plan
+=============================================================
+
+struct Material {
+
+int texNSampler;
+int tex0Sampler;
+int tex1Sampler;
+int tex2Sampler;
+int tex3Sampler;
+
+};
+
+- VulkanTriTree::createMaterial():
+ + build out resource request API and make existing code use it.
+ + use resource request API to create Texture with Vulkan memory backing
+ + Use OptiXTriTree caching scheme to ensure textures are only copied once
+  - TODO
+ + Use wave.lib caching scheme to store material indices for each instance.
+
+2020-01-08: Task List with Timings
+=============================================================
+
+For feature parity with wave.lib:
+[ ] Geometry
+    [x] Passed in transforms on surfaces from G3D are wrong when converted to GLM matrices (2 hours)
+    [x] All geometry is on the same BLAS. (4 hours)
+    [ ] Port geometry caching from wave.lib to waveVK.lib (2 hours)
+    [ ] Update VulkanTriTree::setContents() to take advantage of geometry caching in waveVK.lib (1 hour)
+    [ ] Best practices for geometry and (B|T)LAS creation in VKRT (4 hours)
+[ ] Materials
+    [x] Figure out how to bind multiple materials in VKRT. (6 hours)
+    [x] Create materials for each surface in waveVK.lib as in wave.lib. (6 hours)
+    [ ] Port material caching from wave.lib. (2 hours)
+    [ ] Vulkan has to own the memory for interop, so can't share textures that were loaded in GL.
+        Could return the texture id and the barycentrics to VulkanTriTree and run a pass to sample
+        the material in GL. (8 hours)
+    [ ] Alternately, could push interop into G3D and create vulkan textures for programs that use waveVK.lib. (16 hours)
+        [ ] What are the necessary objects (VkTexture, VkBuffer, VkSampler etc.) for G3D Texture functionality?
+[ ] GLSL Hot Shader Compilation from G3D (3 hours)
+[x] Variable buffer size/window resolution. (4 hours)
+
+Total time until feature parity: ~64 hours
+
+For clean integration into G3D:
+[ ] Decide on API Dependencies:
+    [ ] Vulkan C++ API or C API? (2 hours)
+    [ ] Remove dependency on github vulkan helpers. Dependency was for expediency when implementing interop. (4 hours)
+        [ ] Remove GLM dependency.
+    [ ] Clean up and formally integrate NVIDIA VKRT helper functions (if they are a helpful abstraction). (4 hours)
+[ ] Set up should mirror OpenGL: we provide the correct headers and the user links against vulkan. Ensure that
+    the vulkan packaged with G3D satisfies this requirement. (4 hours)
+
+Total time for clean G3D integration: ~16 hours
+
+Total time for both: ~84 hours (2 full weeks)
+
+<!-- Markdeep: -->
+<script src="markdeep.min.js"></script>
+<script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script>
+<script>window.alreadyProcessedMarkdeep || (document.body.style.visibility = "visible")</script>

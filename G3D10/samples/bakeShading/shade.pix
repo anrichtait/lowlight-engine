@@ -1,0 +1,129 @@
+#version 410
+#include <g3dmath.glsl>
+#include <Texture/Texture.glsl>
+#include "disneyBRDF.glsl"
+
+uniform Texture2D   colorTexture;
+uniform Texture2D   roughnessTexture;
+uniform Texture2D   metalnessTexture;
+uniform Texture2D   glossinessTexture;
+
+uniform Texture2D   ambientOcclusionTexture;
+uniform Texture2D   displacementTexture;
+uniform Texture2D   normalTexture;
+
+uniform TextureCube environmentMapTexture;
+//uniform samplerCube environmentMapTexture;
+
+uniform Vector3     directionToLight;
+uniform Vector3     lightRadiance;
+
+out Color3          dest; 
+
+// Orthographic camera, always face towards the Z-axis
+const Vector3 directionToEye = Vector3(0, 0, 1);
+
+/* Factor to convert displacement values to pixel-scale z elevations.
+   The images are 2048 pixels wide, so make the maximum elevation 80 = 4% of the image
+   width */
+const float DISPLACEMENT_SCALE = 80.0;
+
+
+float traceShadowRay(vec2 pixelOrigin, float zOrigin) {
+    const float RAY_EPSILON = 0.3;
+    const int RAY_MARCH_STEPS = 100;
+
+    Point3 rayMarchPosition = Point3(pixelOrigin.x, pixelOrigin.y, zOrigin + RAY_EPSILON);
+    for (int i = 0; i < RAY_MARCH_STEPS; ++i) {
+        // Flip the Y-axis when projecting the light into pixel coordinates
+        rayMarchPosition += directionToLight * vec3(1, -1, 1);
+        float elevation = sampleTextureFetch(displacementTexture, ivec2(mod(rayMarchPosition.xy + displacementTexture.size, displacementTexture.size) + 0.5), 0).r * DISPLACEMENT_SCALE;
+        if (elevation > rayMarchPosition.z) {
+            // Shadowed because the new surface higher than the ray
+            return 0.0;
+            break;
+        }
+    }
+
+    return 1.0;
+}
+
+
+void main () {
+    // Tiling is done below per texture independently
+    int2 p = int2(gl_FragCoord.xy);
+    
+    // Load the BSDF
+    Color3 color = sampleTextureFetch(colorTexture, p % int2(colorTexture.size), 0).rgb;
+    float  metalness = sampleTextureFetch(metalnessTexture, p % int2(metalnessTexture.size), 0).r;
+    float  roughness = sampleTextureFetch(roughnessTexture, p % int2(roughnessTexture.size), 0).r;
+    float  glossiness = sampleTextureFetch(glossinessTexture, p % int2(glossinessTexture.size), 0).r;
+    // Load the shading point's normal. G3D deals with the
+    // scale, bias, and coordinate system transformation
+    Vector3 normal = normalize(sampleTextureFetch(normalTexture, p % int2(normalTexture.size), 0).xyz * vec3(2, -2, 2) + vec3(-1, 1, -1));
+    // Use below instead if you need to use filtered textures and change the LoD
+    // Vector3 normal = normalize(sampleTexture(normalTexture, gl_FragCoord.xy / normalTexture.size, 0).xyz * vec3(2, -2, 2) + vec3(-1, 1, -1));
+    float ambientOcclusion = sampleTextureFetch(ambientOcclusionTexture, p % int2(ambientOcclusionTexture.size), 0).r;
+    // In "pixel" units towards the viewer, to enable pixel ray marching easily
+    float displacement = sampleTextureFetch(displacementTexture, p % int2(displacementTexture.size), 0).r * DISPLACEMENT_SCALE;
+    // Use below instead if you need to use filtered textures and change the LoD
+    // float displacement = sampleTexture(displacementTexture, gl_FragCoord.xy / displacementTexture.size, 0).r * DISPLACEMENT_SCALE;
+
+    ////////////////////////////////////////////////////////////////////////////////////
+
+    // L is the unit vector to the light source (omega_in) in world space
+    // N is the unit normal in world space
+    // V is the vector to the eye (omega_out) in world space
+    // X and Y are the tangent directions in world space
+    Radiance3 brdfValue =    
+       evaluateDisneyBRDF
+       (color,
+        metalness,
+        0.0, // subsurface
+        metalness, // specular
+        max(0.45, roughness), // roughness (clamp maximum roughness to account for directional light, which produces zero highlights on near-specular surfaces)
+        0.0, // specularTint,
+        0.0, // anisotropic,
+        0.0, // sheen,
+        0.0, // sheenTint,
+        glossiness, // clearcoat,
+        glossiness, // clearcoatGloss,
+        directionToLight,
+        directionToEye,
+        normal,
+        Vector3(1, 0, 0),
+        Vector3(0, 1, 0)) *
+        max(dot(normal, directionToLight), 0.0);
+
+    // Shadow ray march (antialiased)
+    float lightVisibility = (
+        traceShadowRay(p + vec2( 0.0, -0.3), displacement) +
+        traceShadowRay(p + vec2(-0.3,  0.0), displacement) +
+        traceShadowRay(p + vec2(+0.3,  0.0), displacement) +
+        traceShadowRay(p + vec2( 0.0, +0.3), displacement)) / 4.0;
+
+    //////////////////////////////////////////////////////////////////////
+    // Environment lighting
+    Color3 diffuseReflectance = color * (1.0 - metalness);
+    Color3 glossyReflectance = lerp(Color3(0.04), color, metalness);
+
+    // Read from environment in the direction of the normal for diffuse, and go to a low MIP level
+    int maxMIP = int(log2(environmentMapTexture.size.x));
+    Radiance3 diffuseEnvironmentColor = sampleTextureLod(environmentMapTexture, normal, maxMIP).rgb;
+
+    // Mirror reflection of the eye about the normal
+    Vector3 mirrorVector = 2.0 * normal * dot(directionToEye, normal) - directionToEye;
+    float glossyLod = (1.0 - roughness) * float(maxMIP);
+    Radiance3 glossyEnvironmentColor = sampleTextureLod(environmentMapTexture, mirrorVector, glossyLod).rgb;
+
+    dest =
+        brdfValue * lightRadiance * lightVisibility +
+
+        // Diffuse environment reflectance
+        diffuseReflectance * (ambientOcclusion * diffuseEnvironmentColor) +
+
+        // Glossy environment reflectance
+        glossyReflectance * glossyEnvironmentColor + 
+        
+        0.0;
+}

@@ -1,0 +1,13 @@
+#version 410
+#include <g3dmath.glsl>
+
+uniform sampler2D depth;
+
+out Color4 fog;
+
+void main() {
+    float d = texelFetch(depth, ivec2(gl_FragCoord.xy), 0).r;
+    d = pow(d, 550.0);
+    d = lerp(0.0, 0.4, d);
+    fog = Color4(0.15, 0.7, 0.15, d);
+}

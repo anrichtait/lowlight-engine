@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0EA3BCBD-F288-3C72-A811-8D2CDF4E20C7}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>waveVK.lib</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <!--Added to use previous Visual C++ compiler version for compatibility with CUDA 9.1. Unnecessary in >10.0-->
+  <!--Import Project="$(ProjectDir)\Microsoft.VCToolsVersion.14.11.props" /-->
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <!--Copied from hmma_inference file-->
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(g3d)\G3D10\VisualStudio\props\GLSLValidateVS.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(g3d)\G3D10\VisualStudio\props\GLSLValidateVS.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\..\build\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(ProjectDir)\temp\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">waveVKd</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\..\build\lib\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(ProjectDir)\temp\$(Configuration)\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">waveVK</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ReferencePath>$(VC_ReferencesPath_x64);</ReferencePath>
+    <LibraryPath>$(g3d)\G3D10\external\vulkan\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(g3d)\G3D10\external\vulkan\include;$(g3d)\G3D10\external\waveVK.lib\include;$(g3d)\G3D10\external\glew.lib\include;$(g3d)\G3D10\external\glfw.lib\include;$(g3d)\G3D10\external\qrencode.lib\include;$(g3d)\G3D10\external\physx\include;$(g3d)\G3D10\G3D-base.lib\include;$(g3d)\G3D10\G3D-gfx.lib\include;$(g3d)\G3D10\G3D-app.lib\include;$(g3d)\G3D10\GLG3DVR.lib\include;$(g3d)\G3D10\external\tbb\include;$(g3d)\G3D10\external\python\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(g3d)\G3D10\external\vulkan\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(g3d)\G3D10\external\vulkan\include;$(g3d)\G3D10\external\waveVK.lib\include;$(g3d)\G3D10\external\glew.lib\include;$(g3d)\G3D10\external\glfw.lib\include;$(g3d)\G3D10\external\qrencode.lib\include;$(g3d)\G3D10\external\physx\include;$(g3d)\G3D10\G3D-base.lib\include;$(g3d)\G3D10\G3D-gfx.lib\include;$(g3d)\G3D10\G3D-app.lib\include;$(g3d)\G3D10\GLG3DVR.lib\include;$(g3d)\G3D10\external\tbb\include;$(g3d)\G3D10\external\python\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Debug/</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USE_MATH_DEFINES;NOMINMAX;GLUT_FOUND;GLUT_NO_LIB_PRAGMA;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;NOMINMAX;GLUT_FOUND;GLUT_NO_LIB_PRAGMA;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPTIX_SDK)\include;$(OPTIX_SDK)\SDK\sutil;$(OPTIX_SDK)\SDK;$(OPTIX_SDK)\include\optixu;$(OPTIX_SDK)\SDK\generated;$(CUDA_PATH)\include;$(OPTIX_SDK)\SDK\support\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(OPTIX_SDK)\include;$(OPTIX_SDK)\SDK\sutil;$(OPTIX_SDK)\SDK;$(OPTIX_SDK)\include\optixu;$(OPTIX_SDK)\SDK\generated;$(CUDA_PATH)\include;$(OPTIX_SDK)\SDK\support\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>optix.60.lib;opengl32.lib;$(CudaToolkitLibDir)\nvrtc.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;$(OPTIX_SDK)\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OPTIX_SDK)/SDK/generated/lib/Debug/optixPathTracer.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OutDir)$(TargetName).pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <CudaCompile>
+      <CodeGeneration>compute_30,sm_30;</CodeGeneration>
+      <NvccCompilation>ptx</NvccCompilation>
+      <CompileOut>$(OutDir)..\bin\%(Filename)-debug.ptx</CompileOut>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <GPUDebugInfo>false</GPUDebugInfo>
+    </CudaCompile>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>vulkan-1.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CudaToolkitLibDir)</AdditionalLibraryDirectories>
+    </Lib>
+    <PreBuildEvent>
+      <Command>call py -3 "$(ProjectDir)..\scripts\svnrevision.py"
+
+call py -3 "$(ProjectDir)..\scripts\imageformat.py"</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>Generating SVN and ImageFormat code; copying tbb binaries</Message>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>Release/</AssemblerListingLocation>
+      <CompileAs>Default</CompileAs>
+      <DisableSpecificWarnings>4355;4996</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>MaxSpeed</Optimization>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;_USE_MATH_DEFINES;NOMINMAX;GLUT_FOUND;GLUT_NO_LIB_PRAGMA;CMAKE_INTDIR="Release"</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>None</DebugInformationFormat>
+      <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableParallelCodeGeneration>true</EnableParallelCodeGeneration>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;_USE_MATH_DEFINES;NOMINMAX;GLUT_FOUND;GLUT_NO_LIB_PRAGMA;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPTIX_SDK)\include;$(OPTIX_SDK)\SDK\sutil;$(OPTIX_SDK)\SDK;$(OPTIX_SDK)\include\optixu;$(OPTIX_SDK)\SDK\generated;$(CUDA_PATH)\include;$(OPTIX_SDK)\SDK\support\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>$(OPTIX_SDK)\include;$(OPTIX_SDK)\SDK\sutil;$(OPTIX_SDK)\SDK;$(OPTIX_SDK)\include\optixu;$(OPTIX_SDK)\SDK\generated;$(CUDA_PATH)\include;$(OPTIX_SDK)\SDK\support\freeglut\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>optix.60.lib;opengl32.lib;$(CudaToolkitLibDir)\nvrtc.lib;$(CudaToolkitLibDir)\cudart.lib;winmm.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib;$(OPTIX_SDK)\lib64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>$(OPTIX_SDK)/SDK/generated/lib/Release/optixPathTracer.lib</ImportLibrary>
+      <ProgramDataBaseFile>$(OPTIX_SDK)/SDK/generated/bin/Release/optixPathTracer.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+    <!--Copied from hmma_inference file-->
+    <CudaCompile>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+      <CodeGeneration>compute_30,sm_30;</CodeGeneration>
+      <PtxAsOptionV>false</PtxAsOptionV>
+      <Keep>Yes</Keep>
+      <NvccCompilation>ptx</NvccCompilation>
+      <InterleaveSourceInPTX>false</InterleaveSourceInPTX>
+      <CompileOut>$(OutDir)..\bin\%(Filename).ptx</CompileOut>
+    </CudaCompile>
+    <CudaLink>
+      <PerformDeviceLink>true</PerformDeviceLink>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
+    </CudaLink>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>vulkan-1.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(CudaToolkitLibDir)</AdditionalLibraryDirectories>
+    </Lib>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <GLSLValidate Include="test\data-files\shader\anyhit.rahit" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\waveVK.lib\include\allocator_dedicated_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\appbase_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\commands_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\debug_util_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\descriptorsets_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\BottomLevelASGenerator.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\DescriptorSetGenerator.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\RaytracingPipelineGenerator.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\ShaderBindingTableGenerator.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\TopLevelASGenerator.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\nv_helpers_vk\VKHelpers.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\obj_loader.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\pipeline_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\raytrace_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\renderpass_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\stb_image.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\swapchain_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\tiny_obj_loader.h" />
+    <ClInclude Include="..\external\waveVK.lib\include\utilities_vkpp.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\utils.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\allocation.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\buffer.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\context.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\debug.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\filesystem.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\forward.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\framebuffer.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\framebuffer2.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\frustum.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\helpers.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\image.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\model.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\offscreen.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\pipelines.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\renderpass.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\shaders.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\storage.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\swapchain.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\texture.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\version.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\vks.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\vks\vku.hpp" />
+    <ClInclude Include="..\external\waveVK.lib\include\waveVK\waveVK.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\BottomLevelASGenerator.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\DescriptorSetGenerator.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\RaytracingPipelineGenerator.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\ShaderBindingTableGenerator.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\TopLevelASGenerator.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\nv_helpers_vk\VKHelpers.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\vulkan_raytracing.cpp" />
+    <ClCompile Include="..\external\waveVK.lib\source\waveVK.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

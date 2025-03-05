@@ -1,0 +1,59 @@
+// To run with OpenGL
+/* Modern OpenGL
+#version 430
+#define highp
+
+#extension GL_ARB_compute_variable_group_size : enable
+layout(local_size_variable) in;
+*/
+
+// OpenGL ES 3.1
+#version 310 es
+
+// do NOT set the group size in C++ if you use this:
+layout(local_size_x = 8, local_size_y = 4) in;
+
+
+#expect USE_SSBO
+
+#if USE_SSBO
+    layout(std430, binding=0) restrict writeonly buffer outputBuffer {
+        // If the output is rgba8, declare this as uint and 
+        // use packUnorm4x8 https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/packUnorm.xhtml
+        vec4 outputBufferData[];
+    };
+    uniform int ssboWidth;
+#else
+    // See https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/glBindImageTexture.xhtml for 
+    // a list of the allowed image formats. Note that if you want to read, you should remove the
+    // "writeonly" qualifier.
+    layout(location=1, rgba32f) writeonly uniform highp image2D outputTexture;
+#endif
+
+uniform sampler2D   inputTexture;
+
+void main () {
+    ivec2 coord = ivec2(gl_GlobalInvocationID.xy);
+
+    highp vec4 src = texelFetch(inputTexture, coord, 0).rgba;
+    highp float a = src.x;
+    highp float b = src.y;
+    highp float c = src.z;
+
+    highp float k = sqrt(b * b - 4 * a * c);
+       
+    // Write both roots of this quadratic equation to adjacent values
+    ivec2 outputCoord = ivec2(2 * coord.x, coord.y);
+
+    vec4 r1 = vec4((-b + k) / (2 * a));
+    vec4 r2 = vec4((-b - k) / (2 * a));
+
+#   if USE_SSBO
+        int outputIndex = outputCoord.y * ssboWidth + outputCoord.x;
+        outputBufferData[outputIndex] = r1;
+        outputBufferData[outputIndex + 1] = r2;
+#   else
+        imageStore(outputTexture, outputCoord, r1);
+        imageStore(outputTexture, outputCoord + ivec2(1, 0), r2);
+#   endif
+}

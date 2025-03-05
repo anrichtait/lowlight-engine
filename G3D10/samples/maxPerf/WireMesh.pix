@@ -1,0 +1,12 @@
+#version 430
+#include <g3dmath.glsl>
+
+/** RGB space */
+in Color3 color;
+
+out Color3 result;
+
+void main() {
+    // Gamma encode for the screen
+    result = sqrt(color);
+}

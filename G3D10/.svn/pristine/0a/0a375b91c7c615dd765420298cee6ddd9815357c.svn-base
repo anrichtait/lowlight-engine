@@ -1,0 +1,57 @@
+/** \mainpage 
+
+\htmlonly
+<table border=0 width=100% >
+<tr align=top >
+<td valign=top >
+<font size="4" face="Arial" >
+\endhtmlonly
+
+<div style="float:right">
+<img src="G3D.jpg" style="width:400px">
+<br/>
+G3D Innovation Engine version 10.01
+</div>
+
+<blockquote>
+<h1>Getting Started</h1>
+
+- <a href="readme.md.html">Installation Instructions</a>
+- \link samples Sample Programs\endlink
+- \link guidenewproject Creating a New Project \endlink
+
+<h1>Concepts</h1>
+- \link guideoverview %G3D Overview \endlink
+- \link guideconcepts API Concepts \endlink
+- \link devtools Debugging Tools \endlink
+
+<h1>Reference Documentation</h1>
+
+- <a class="el" href="apiindex.html">API Index</a>
+- <a class="el" href="dataindex.html">Data File Index</a>
+- <a class="el" href="icompile.html">iCompile Manual</a> (MacOS &amp; Linux)
+
+<h1>About %G3D</h1>
+- <a class="el" href="license.txt">License</a>
+- <a class="el" href="contributors.html">Credits</a>
+- <a class="el" href="changelog.html">Change Log</a>
+
+</blockquote>
+
+<HR>
+G3D Innovation Engine Manual and Library source code
+<br>Copyright 2000-2018, Morgan McGuire.
+<br>All rights reserved.
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+*/
+

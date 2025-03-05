@@ -1,0 +1,195 @@
+
+/* -*- c++ -*- */
+{ 
+    defaultCamera = "defaultCamera"; 
+    description = ""; 
+    entities = { 
+        ball = VisibleEntity { 
+            canCauseCollisions = true; 
+            frame = CFrame::fromXYZYPRDegrees(4.60195, 0.18146, 0 ); 
+            mass = 1; 
+            model = "ballModel"; 
+        }; 
+        
+        defaultCamera = Camera { 
+            canChange = false; 
+            depthOfFieldSettings = DepthOfFieldSettings { 
+                enabled = true; 
+                farBlurRadiusFraction = 0.0078; 
+                farBlurryPlaneZ = -29.79; 
+                farSharpPlaneZ = -13.18; 
+                focusPlaneZ = -10; 
+                lensRadius = 0.01; 
+                model = "ARTIST"; 
+                nearBlurRadiusFraction = 0; 
+                nearBlurryPlaneZ = -0.01; 
+                nearSharpPlaneZ = -0.29; 
+                reducedResolutionFactor = 1; 
+            }; 
+            
+            filmSettings = FilmSettings { 
+                antialiasingEnabled = false; 
+                antialiasingFilterRadius = 0; 
+                antialiasingHighQuality = false; 
+                bloomRadiusFraction = 0.009; 
+                bloomStrength = 0.2; 
+                debugZoom = 1; 
+                effectsEnabled = true; 
+                gamma = 2.01322; 
+                invertX = false; 
+                invertY = false; 
+                sensitivity = 1; 
+                temporalAntialiasingEnabled = true; 
+                toneCurve = Spline { 
+                    control = ( 0, 0.0680851, 0.465957, 0.808511, 0.930638 ); 
+                    extrapolationMode = "LINEAR"; 
+                    finalInterval = -1; 
+                    interpolationMode = "CUBIC"; 
+                    time = ( 0, 0.126087, 0.330435, 0.795652, 1 ); 
+                }; 
+                
+                vignetteBottomStrength = 0.05; 
+                vignetteSizeFraction = 0.17; 
+                vignetteTopStrength = 0.5; 
+            }; 
+            
+            frame = CFrame::fromXYZYPRDegrees(4.5721, 0.77873, -9.6741, 178.1, 14.989, 0); 
+            mass = 1; 
+            motionBlurSettings = MotionBlurSettings { 
+                enabled = false; 
+                exposureFraction = 0.75; 
+                maxBlurDiameterFraction = 0.1; 
+                numSamples = 15; 
+            }; 
+            
+            overridePixelOffset = true; 
+            projection = Projection { 
+                farPlaneZ = -150; 
+                fovDegrees = 60; 
+                fovDirection = "VERTICAL"; 
+                nearPlaneZ = -0.1; 
+                pixelOffset = Vector2(0.296875, -0.191358 ); 
+            }; 
+            
+            visualizationScale = 1; 
+        }; 
+        
+
+        paddle = VisibleEntity { 
+            canCauseCollisions = true; 
+            frame = CFrame::fromXYZYPRDegrees(4.7028, -0.426665, 0 ); 
+            mass = 1; 
+            model = "paddleModel"; 
+        }; 
+        
+        skybox = Skybox { 
+            texture = "cubemap/lostvalley/lostvalley_*.jpg";
+            //texture = "cubemap/mpa116/mpa116*.png";
+        }; 
+        
+        sun = Light { 
+            attenuation = ( 0, 0, 1 ); 
+            bulbPower = Power3(5e+06, 4e+06, 2e+06 ); 
+            canCauseCollisions = true; 
+            canChange = false; 
+            enabled = true; 
+            frame = CFrame::fromXYZYPRDegrees(-15.5767, 207.755, -41.952, -164.03, -76.7166, 76.514 ); 
+            mass = 1; 
+            nearPlaneZLimit = -170; 
+            producesDirectIllumination = true; 
+            producesIndirectIllumination = true; 
+            rectangular = true; 
+            shadowMapBias = 0.05; 
+            shadowMapSize = Vector2int16(2048, 2048 ); 
+            shadowsEnabled = true; 
+            spotHalfAngleDegrees = 5; 
+            type = "SPOT"; 
+        }; 
+        
+        water = VisibleEntity { 
+            canCauseCollisions = true; 
+            frame = CFrame::fromXYZYPRDegrees(4.2922, -0.75202, 0 ); 
+            mass = 1; 
+            model = "waterModel"; 
+        }; 
+        
+    }; 
+    
+    lightingEnvironment = LightingEnvironment { 
+        ambientOcclusionSettings = AmbientOcclusionSettings { 
+            bias = 0.1; 
+            blurRadius = 0; 
+            blurStepSize = 1; 
+            depthPeelSeparationHint = 0.02; 
+            edgeSharpness = 1; 
+            enabled = true; 
+            highQualityBlur = true; 
+            intensity = 2.70833; 
+            monotonicallyDecreasingBilateralWeights = false; 
+            numSamples = 10; 
+            packBlurKeys = false; 
+            radius = 0.568632; 
+            temporalFilterSettings = TemporalFilter::Settings { 
+                falloffEndDistance = 0.07; 
+                falloffStartDistance = 0.05; 
+                hysteresis = 0.9; 
+            }; 
+            
+            temporallyVarySamples = true; 
+            useDepthPeelBuffer = true; 
+            useNormalBuffer = true; 
+            useNormalsInBlur = true; 
+            zStorage = "HALF"; 
+        }; 
+        /*
+        environmentMap = Texture::Specification { 
+            filename = "cubemap/noonclouds/noonclouds_*.png"; 
+        };
+        */ 
+        
+    }; 
+    
+    models = { 
+        ballModel = ArticulatedModel::Specification { 
+            filename = "sphere/sphere.zip/sphere-cubecoords.obj"; 
+            preprocess = { 
+                setMaterial(all(), UniversalMaterial::Specification { 
+                        bump = "material/leather/bump.jpg"; 
+                        glossy = Color4(0.1, 0.1, 0.1, 0.6 ); 
+                        lambertian = Color3(0.1, 0.025, 0.02 ); 
+                    } ) }; 
+            
+            scale = 0.4; 
+            stripMaterials = true; 
+        }; 
+        
+        brickRubyModel = "model/brickRuby.ArticulatedModel.Any"; 
+        brick1Model = "model/brick1.ArticulatedModel.Any"; 
+        brick2Model = "model/brick2.ArticulatedModel.Any"; 
+        brick3Model = "model/brick3.ArticulatedModel.Any"; 
+        paddleModel = ArticulatedModel::Specification { 
+            filename = "model/paddle.zip/paddle.obj"; 
+            preprocess = { 
+                transformGeometry(all(), Matrix4::yawDegrees(90 ) ) }; 
+            
+            scale = 0.0075; 
+        }; 
+        
+        waterModel = 
+        /* Temporary */
+        ArticulatedModel::Specification { 
+            filename = "model/CornellBox/CornellBox.zip/water.obj"; 
+            preprocess = { 
+                setMaterial(all(), UniversalMaterial::Specification { 
+                        glossy = Color4(0.5, 0.9, 1, 1 ); 
+                        lambertian = Color3(0, 0, 0 ); 
+                    } ); 
+                transformGeometry(all(), Matrix4::scale(1.5, 0.2, 1 ) ) }; 
+            
+            scale = 8; 
+        }; 
+        
+    }; 
+    
+    name = "Level1"; 
+} 

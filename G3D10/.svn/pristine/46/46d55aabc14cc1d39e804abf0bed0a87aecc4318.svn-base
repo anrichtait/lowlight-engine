@@ -1,0 +1,28 @@
+<hr>
+ <address style="align: right;">
+  <small>
+   $projectname documentation generated on $datetime using <a href="http://www.doxygen.org/index.html">
+    <img src="doxygen.png" alt="doxygen" align="middle" border="0" width="55"/>
+   </a> $doxygenversion
+  </small>
+ </address>
+ </body>
+
+<script>
+ (function() {
+ var body = document.getElementsByTagName("body")[0];
+ body.style.background = "#000";
+ 
+ var links = document.querySelectorAll("a");
+ for (var i = 0; i < links.length; ++i) {
+    links[i].style.color = "#555";
+ }
+
+ links = document.querySelectorAll("a:visited");
+ for (i = 0; i < links.length; ++i) {
+    links[i].style.color = "#550";
+ }
+
+ });
+</script>
+ </html>

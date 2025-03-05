@@ -1,0 +1,23 @@
+        **FreeImage**
+        3.19.0
+
+# Upgrading 3.18.0
+
+1. Copied all files from freeimage zip to G3D
+2. Deleted any new/existing visual studio project files to avoid confusion
+3. Added any new files to freeimage.lib project
+4. I re-organized a couple file filters so I could see which files from subdirectories were added in OpenEXR and LibRawLite.
+5. Updated some header paths in the freeimage.lib project for LibJPEG and LibOpenJPEG and new LibWebP.
+6. Set USE_JPIP define in freeimage.lib project for LibOpenJPEG which added it to wrap some includes.
+7. I changed the namespace used for Imf:staticInitialize() in Image.cpp to the internal namespace.
+8. Patch header file paths as needed to match G3D current configuration
+9. Force `#define FREEIMAGE_COLORORDER FREEIMAGE_COLORORDER_RGB` in FreeImage.h regardless of endianness
+
+# Upgrading 3.19.0
+
+1. Updated all freeimage files while keeping modifications specific to G3D
+2. Left out Visual Studio files
+3. Left out LibRawLite and LibJXR
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

@@ -1,0 +1,20 @@
+ArticulatedModel::Specification {
+    filename = "default-avatar.zip/rightHand.obj";
+    stripMaterials = true;
+
+    cleanGeometrySettings = ArticulatedModel::CleanGeometrySettings {
+        forceVertexMerging = false;
+        allowVertexMerging = false;
+        forceComputeNormals = true;
+        forceComputeTangents = false;
+        maxNormalWeldAngleDegrees = 180;
+        maxSmoothAngleDegrees = 180;
+    };
+
+    preprocess = {
+        setCFrame(root(), CFrame::fromXYZYPRDegrees(0,-0.01,0,180));
+        setMaterial(all(), UniversalMaterial::Specification {
+            lambertian = Color3::fromASRGB(0x7b472b);
+        });
+    };
+}

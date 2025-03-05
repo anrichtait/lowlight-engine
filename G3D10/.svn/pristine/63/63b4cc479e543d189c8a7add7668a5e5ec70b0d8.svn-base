@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{40ad17b9-6023-4e05-aed9-a72beac66f3e}</ProjectGuid>
+    <RootNamespace>tbblib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>tbb.dll</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\external-library-release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)..\external\tbb\src;$(SolutionDir)..\external\tbb\src\rml\include;$(SolutionDir)..\external\tbb\include;$(IncludePath)</IncludePath>
+    <TargetName>tbb</TargetName>
+    <OutDir>$(SolutionDir)\..\temp\$(ProjectName)\$(Configuration)\Output\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile />
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>$(IntDir)tbb.def</ModuleDefinitionFile>
+    </Link>
+    <ClCompile>
+      <PreprocessorDefinitions>__TBB_BUILD;USE_WINTHREAD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling />
+    </ClCompile>
+    <PostBuildEvent>
+      <Command>call py -3 "$(Solution)..\bin\ice\copyifnewer.py" "$(SolutionDir)\..\temp\$(ProjectName)\$(Configuration)\Output\*.dll" "$(SolutionDir)..\build\bin"
+call py -3 "$(Solution)..\bin\ice\copyifnewer.py" "$(SolutionDir)\..\temp\$(ProjectName)\$(Configuration)\Output\*.lib" "$(SolutionDir)..\build\lib"
+</Command>
+      <Message>Copying tbb.dll and tbb.lib to build directory</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\tbb\src\old\concurrent_queue_v2.cpp" />
+    <ClCompile Include="..\external\tbb\src\old\concurrent_vector_v2.cpp" />
+    <ClCompile Include="..\external\tbb\src\old\spin_rw_mutex_v2.cpp" />
+    <ClCompile Include="..\external\tbb\src\old\task_v2.cpp" />
+    <ClCompile Include="..\external\tbb\src\rml\client\rml_tbb.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\arena.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\cache_aligned_allocator.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\concurrent_hash_map.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\concurrent_monitor.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\concurrent_queue.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\concurrent_vector.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\condition_variable.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\critical_section.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\dynamic_link.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\governor.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\itt_notify.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\market.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\observer_proxy.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\pipeline.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\private_server.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\queuing_mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\queuing_rw_mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\reader_writer_lock.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\recursive_mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\scheduler.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\semaphore.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\spin_mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\spin_rw_mutex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\task.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\task_group_context.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\tbb_main.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\tbb_misc.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\tbb_misc_ex.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\tbb_statistics.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\tbb_thread.cpp" />
+    <ClCompile Include="..\external\tbb\src\tbb\x86_rtm_rw_mutex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\external\tbb\src\tbb\intel64-masm\atomic_support.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /Fo"$(IntDir)%(FileName).obj" /DUSE_FRAME_POINTER /DEM64T=1 /c /Zi %(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building atomic_support.obj</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(FileName).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\external\tbb\src\tbb\intel64-masm\intel64_misc.asm">
+      <FileType>Document</FileType>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /Fo"$(IntDir)%(FileName).obj" /DUSE_FRAME_POINTER /DEM64T=1 /c /Zi %(FullPath)</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building intel64_misc.obj</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(FileName).obj;%(Outputs)</Outputs>
+    </CustomBuild>
+    <CustomBuild Include="..\external\tbb\src\tbb\intel64-masm\itsx.asm">
+      <FileType>Document</FileType>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">building itsx.obj</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)%(FileName).obj;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ml64 /Fo"$(IntDir)%(FileName).obj" /DUSE_FRAME_POINTER /DEM64T=1 /c /Zi %(FullPath)</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\external\tbb\src\tbb\win64-tbb-export.def">
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cl /nologo /TC /EP $(SolutionDir)..\external\tbb\src\tbb\win64-tbb-export.def /DTBB_USE_DEBUG /DDO_ITT_NOTIFY /DUSE_WINTHREAD /D_CRT_SECURE_NO_DEPRECATE /D_WIN32_WINNT=0x0400 /D__TBB_BUILD=1 /I$(SolutionDir)..\external\tbb\include &gt;"$(IntDir)tbb.def"</Command>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">generating tbb.def file</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(IntDir)tbb.def;%(Outputs)</Outputs>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

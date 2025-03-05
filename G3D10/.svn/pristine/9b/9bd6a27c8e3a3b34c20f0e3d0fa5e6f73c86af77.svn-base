@@ -1,0 +1,39 @@
+#version 400
+
+//In values
+//in vec2 UV;
+
+#include <compatibility.glsl>
+	
+//Out values
+out vec4 fragColor;
+
+// Static
+//uniform sampler2D map;
+//uniform sampler2D fb_depth;
+vec2 screen_size = vec2(1200, 650);
+float n = 0.;
+float bright = 1.0;
+
+// Variables for run-time;
+vec2 uv     = vec2(0,0);
+float f     = 0.;
+
+//main shader
+void main(void)
+{
+      vec4 sum  = vec4(1.,1.,1.,1.);
+      uv        = vec2(gl_FragCoord.x,gl_FragCoord.y)/screen_size;
+      vec4 a = vec4(.5, .5, .5, 1.);// texture2D(map, uv.xy);
+      f         = abs(a.w-n/100.)*10.+3.;
+////    f         = 2;
+//    for(int i=0;i<f;i++){
+//         for(int j=0;j<f;j++){
+//             sum += texture2D(map, (uv.xy+vec2(i,j)/screen_size));
+//             sum += texture2D(map, (uv.xy-vec2(i,j)/screen_size));
+//             sum += texture2D(map, (uv.xy+vec2(-i,j)/screen_size));
+//             sum += texture2D(map, (uv.xy+vec2(i,-j)/screen_size));
+//         }
+//    }
+      fragColor = abs(sum)*bright / (f*f*4.);
+}

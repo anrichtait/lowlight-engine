@@ -1,0 +1,521 @@
+/** 
+\page samples Tools and Sample Programs
+
+\htmlonly
+<center>
+<a href="#starter"><IMG SRC="demo-starter.png" width=180 height=100></a>
+<a href="#vrstarter"><IMG SRC="demo-vr.png" width=180 height=100></a>
+<a href="#tinyStarter"><IMG SRC="demo-tinyStarter.png" width=180 height=100></a>
+<a href="#viewer"><IMG SRC="tool-viewer.png" width=180 height=100></a>
+<a href="#allStagesShader"><IMG SRC="demo-allstagesshader.png" width=180 height=100></a>
+<a href="#cpuRealTimeRayTrace"><IMG SRC="demo-rayTrace.png" width=180 height=100></a>
+<a href="#deepGBufferRadiosity"><IMG SRC="demo-radiosity.png" width=180 height=100></a>
+<a href="#entity"><IMG SRC="demo-entity.png" width=180 height=100></a>
+<a href="#geometry"><IMG SRC="demo-geometry.png" width=180 height=100></a>
+<a href="#imageProcessing"><IMG SRC="demo-image.png" width=180 height=100></a>
+<a href="#implicitPlanet"><IMG SRC="demo-planet.png" width=180 height=100></a>
+<!-- <a href="#maxPerf"><IMG SRC="demo-maxPerf" width=180 height=100></a> -->
+<a href="#minimalOpenGL"><IMG SRC="demo-opengl.png" width=180 height=100></a>
+<a href="#multiview"><IMG SRC="demo-multiview.png" width=180 height=100></a>
+<a href="#netchat"><IMG SRC="demo-netchat.png" width=180 height=100></a>
+<a href="#pathTracer"><IMG SRC="demo-pathTracer.png" width=180 height=100></a>
+<a href="#pixelShader"><IMG SRC="demo-shader.png" width=180 height=100></a>
+<a href="#primaryRayTrace"><IMG SRC="demo-primaryRayTrace.png" width=180 height=100></a>
+<a href="#proceduralGeometry"><IMG SRC="demo-procedural.png" width=180 height=100></a>
+<a href="#rayMarch"><IMG SRC="demo-raymarch.png" width=180 height=100></a>
+<a href="#remoteRender"><IMG SRC="remote.png" width=180 height=100></a>
+<a href="#shadertoy"><IMG SRC="demo-shadertoy.png" width=180 height=100></a>
+<a href="#simpleGame"><IMG SRC="demo-simplegame.png" width=180 height=100></a>
+<a href="#texture2DArray"><IMG SRC="sample-texture2DArray.png" width=180 height=100></a>
+\endhtmlonly
+
+<center>
+<table width=100% border=0 cellpadding=2 cellspacing=2 style="max-width: 800px">
+<tr><td colspan=2 height=1 style="background:#888"> </td></tr>
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="starter"> </a><b>Starter</b> (<code>G3D10/samples/starter</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly <IMG SRC="demo-starter.png" width=250 > \endhtmlonly
+</td>
+<td>
+<p>
+A good starting point for building your own %G3D programs. Has subdirectory structure,
+a journal, a Windows resource file, and standalone solution files. Just copy everything
+from <code>samplers/starter</code> to your own directory and rename <code>starter.sln</code>.
+Do not rename <code>main.*</code>.</p>
+<p>To aid in discovering methods, the sample <code>App</code>
+class overrides most G3D::GApp event handling methods. You do not have to do this...
+the default <code>GApp::onGraphics3D</code>, <code>GApp::onPose</code>, and other methods are fine for
+most programs.
+(This is the program that iCompile creates for you in an empty directory on Linux and MacOS.)
+</p>
+<ul>
+ <li> G3D::GApp
+ <li> G3D::Scene
+ <li> G3D::Entity
+ <li> G3D::ArticulatedModel
+ <li> G3D::LightingEnvironment
+ <li> G3D::Draw
+ <li> G3D::DepthOfField
+ <li> G3D::MotionBlur
+ <li> G3D::AmbientOcclusion
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="vrstarter"> </a><b>VR Starter</b> (<code>G3D10/samples/vrstarter</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-vr.png" width=250 >\endhtmlonly
+</td>
+<td>
+A good starting point for VR applications. Optimized to provide performance for VR rendering and based on the 
+G3D::VRApp base class, which extends G3D::GApp with some VR-specific elements. Built-in teleportation,
+elevation adjustment for the player, and support for pluggable gaze-tracking solutions. Automatically
+falls back to emulating a HMD and gaze tracker if physical ones are not present.
+<ul>
+ <li> G3D::VRApp
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="tinyStarter"> </a><b>Tiny Starter</b> (<code>G3D10/samples/tinyStarter</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-tinyStarter.png" width=250 >\endhtmlonly
+</td>
+<td>
+Like <code>starter</code>, but without the directory structure, scene loading, journal, and default
+event handler method overrides. If you're making a small prgram and want the minimal GApp subclass,
+this is a good place to start.
+<ul>
+ <li> G3D::GApp
+ <li> G3D::Draw
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="viewer"> </a><b>Viewer</b> (<code>G3D10/tools/viewer</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="tool-viewer.png" width=250 >\endhtmlonly
+</td>
+<td>
+Loads most data files supported by %G3D, including, OBJ, FBX, 3DS, STL, IFS, GTM, MP4, PNG, JPG, FNT, ArticulatedModel.Any, UniversalMaterial.Any,
+and displays them in an appropriate manner.  Use this for previewing objects, discovering
+font characters, and debugging data files.
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+<tr><td colspan=2 height=1 style="background:#888"> </td></tr>
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="allStagesShader"> </a><b>All Stages Shader</b> (<code>G3D10/samples/allStagesShader</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-allstagesshader.png" width=250 >\endhtmlonly
+</td>
+<td>
+Shows domain (tessellation), hull, vertex, geometry, and fragment (pixel) shaders.
+While these are fully supported both by G3D and OpenGL, in practice most developers
+are migrating to either vertex + pixel or mesh + pixel shaders as the other stages
+have not proved a good fit for most GPU algorithms.
+<ul>
+ <li> G3D::Shader
+ <li> Tessellation, hull, geometry, vertex, and pixel shader
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="cpuRealTimeRayTrace"> </a><b>CPU Real Time Ray Trace</b> (<code>G3D10/samples/cpuRealTimeRayTrace</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-rayTrace.png" width=250 >\endhtmlonly
+</td>
+<td>
+Program that shades ray hits on the CPU. The actual ray-triangle intersection will be CPU or GPU depending on your
+graphics card and processor.
+
+<ul>
+ <li> Ray tracing
+ <li> CPU rendering
+ <li> G3D::TriTree
+ <li> G3D::UniversalBSDF
+ <li> G3D::GuiRadioButton
+ <li> G3D::GuiNumberBox
+ <li> G3D::GuiButton
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="deepGBufferRadiosity"> </a><b>Deep G-Buffer Radiosity</b> (<code>G3D10/samples/deepGbufferRadiosity</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-radiosity.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> Screen space effects
+ <li> Complex GUI development
+ <li> G3D::GBuffer
+ <li> Splitscreen rendering
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="entity"> </a><b>Entity</b> (<code>G3D10/samples/entity</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-entity.png" width=250 >\endhtmlonly
+</td>
+<td>
+A spaceship flying video game demonstrating how to
+mix procedural and data-driven Entity construction.
+
+<ul>
+ <li> G3D::VisibleEntity
+ <li> Interactive control
+ <li> G3D::AudioDevice
+ <li> Procedural scene creation
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="geometry"> </a><b>Geometry Shader</b> (<code>G3D10/samples/geometry</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly <IMG SRC="demo-geometry.png" width=250 > \endhtmlonly
+</td>
+<td>
+<ul>
+ <li> OpenGL 3.x / GLSL 3.3
+ <li> G3D::Shader
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="imageProcessing"> </a><b>Image Processing</b> (<code>G3D10/samples/imageProcessing</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-image.png" width=250 >\endhtmlonly
+</td>
+<td>
+A good starting point for 2D image operations in G3D, where the input and output
+tend to be in Textures and most passes are fullscreen.
+<ul>
+ <li> G3D::Shader
+ <li> G3D::Args::setRect
+ <li> G3D::RenderDevice::push2D
+ <li> G3D::Texture
+ <li> G3D::Framebuffer
+ <li> 2D rendering with no 3D
+ <li> Convolution
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="implicitPlanet"> </a><b>Implict Planet Shader</b> (<code>G3D10/samples/implicitPlanet</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-planet.png" width=250 >\endhtmlonly
+</td>
+<td>
+A "shadertoy"-style implicit surface with multiple passes for different effects at
+different resolutions. Demonstrates render-to-texture as well as advanced shader techniques.
+<ul>
+ <li> G3D::Shader
+ <li> G3D::Texture
+ <li> G3D::Framebuffer
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="maxPerf"> </a><b>Maximum Performance</b> (<code>G3D10/samples/maxPerf</code>)</td></tr>
+<tr valign=top>
+<td>
+Image coming soon--example under construction!
+</td>
+<td>
+A stripped down rendering loop designed for near-minimal latency and near-peak throughput.
+This has simple graphics and is intended for display measurements in research when measuring the
+upper bound ("speed of light") performance for graphics. The approach 
+taken here would not scale for complex graphics and interaction,
+where the usual G3D::Scene and G3D::Surface infrastructure performs high-level optimizations
+but incurs some fixed overhead.
+<ul>
+ <li> G3D::Shader
+ <li> G3D::VertexBuffer
+ <li> G3D::AttributeArray
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="minimalOpenGL"> </a><b>Minimal OpenGL</b> (<code>G3D10/samples/minimalOpenGL</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-opengl.png" width=250 >\endhtmlonly
+</td>
+<td>
+An example of using OpenGL without most of G3D's abstractions. This is intended for
+teaching OpenGL and creating minimal bug reports for graphics card vendors. It makes
+a clear case for why it is usually much more efficient for both the programmer and
+the computer to build applications on a higher-level engine.
+<ul>
+ <li> Raw OpenGL initialization and implementation
+ <li> Raw OpenVR initialization and implementation
+ <li> Procedural texturing
+ <li> Direct use of uniform interface blocks
+ <li> Direct use of textures and framebuffers
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="multiview"> </a><b>Multiple Views</b> (<code>G3D10/samples/multiview</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly <IMG SRC="demo-multiview.png" width=250 > \endhtmlonly
+</td>
+<td>
+Rendering to multiple viewports to create a CAD-like application
+<ul>
+ <li> G3D::RenderDevice::setViewport
+ <li> G3D::Surface::renderWireframe
+ <li> G3D::GuiWindow
+ <li> G3D::IconSet
+ <li> G3D::Draw
+</ul>
+</td>
+</tr>md
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="netchat"> </a><b>Net Chat</b> (<code>G3D10/samples/netChat</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-netchat.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> G3D::NetConnection
+ <li> G3D::GuiWindow
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="pathTracer"> </a><b>Path Tracer</b> (<code>G3D10/samples/pathTracer</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-pathTracer.png" width=250 >\endhtmlonly
+</td>
+<td>
+Provides a GUI for non-realtime rendering with the built-in PathTracer class.
+Automatically GPU accelerated on NVIDIA graphics cards via OptiXTriTree.
+<ul>
+ <li> G3D::PathTracer
+ <li> G3D::Film
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="pixelShader"> </a><b>Pixel Shader</b> (<code>G3D10/samples/pixelShader</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-shader.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> G3D::Shader
+ <li> G3D::ThirdPersonManipulator
+ <li> G3D::GuiDropDownList
+ <li> G3D::GuiSlider
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="primaryRayTrace"> </a><b>Primary Ray Trace</b> (<code>G3D10/samples/primaryRayTrace</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-primaryRayTrace.png" width=250 >\endhtmlonly
+</td>
+<td>
+Using G3D::TriTree to cast arbitrary rays. This technique is useful for light field and VR displays as
+well as tracing reflection probes. This example shows a fisheye projection with full GPU shading.
+<ul>
+ <li> G3D::TriTree
+ <li> G3D::Surfel
+ <li> Deferred shading
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="proceduralGeometry"></a><b>Procedural Geometry</b> (<code>G3D10/samples/proceduralGeometry</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-procedural.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> G3D::ArticulatedModel::Part
+ <li> G3D::ArticulatedModel::Mesh
+ <li> G3D::ArticulatedModel::Geometry
+ <li> G3D::CPUVertexArray
+ <li> G3D::UniversalMaterial
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="rayMarch"> </a><b>Ray Marching</b> (<code>G3D10/samples/rayMarch</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-raymarch.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> Extensive pixel shader and fractal geometry
+ <li> VR rendering
+</ul>
+</td>
+</tr>
+
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="remoteRender"> </a><b>Remote Rendering</b> (<code>G3D10/samples/remoteRender</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly <IMG SRC="remote.png" width=250 > \endhtmlonly
+</td>
+<td>
+ <ul>
+ <li> HTML/HTTP client code and HTTP server (civetweb)
+ <li> Javascript
+ <li> websockets
+ <li> G3D::NetAddress
+ <li> G3D::Any
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="shadertoy"> </a><b>Shadertoy</b> (<code>G3D10/samples/shadertoy</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-shadertoy.png" width=250 >\endhtmlonly
+</td>
+<td>
+Mimics the <a href="shadertoy.com">shadertoy.com</a> interface to allow desktop offline ports of shaders with minimal changes.
+ <ul>
+ <li> G3D::Shader
+ <li> G3D::Texture
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+<tr><td colspan=2><a name="simpleGame"> </a><b>FPS Game</b> (<code>G3D10/samples/simpleGame</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly <IMG SRC="demo-simplegame.png" width=250 > \endhtmlonly
+</td>
+<td>
+Simple game infrastructure demonstrating collision detection and first person movement.
+<ul>
+ <li> G3D::TriTree
+ <li> G3D::Scene
+ <li> G3D::Entity
+ <li> G3D::debugDraw
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+
+
+<tr><td colspan=2><a name="texture2DArray"> </a><b>Texture2DArray</b> (<code>G3D10/samples/texture2DArray</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="sample-texture2DArray.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> G3D::Texture
+ <li> Animated texture
+</ul>
+</td>
+</tr>
+
+
+<!--
+<tr><td colspan=2>Photon map (<code>G3D10/samples/photonMap</code>)</td></tr>
+<tr valign=top>
+<td>
+\htmlonly<IMG SRC="demo-photon.png" width=250 >\endhtmlonly
+</td>
+<td>
+<ul>
+ <li> G3D::TriTree
+ <li> G3D::FastPointHashGrid
+ <li> G3D::Surfel
+</ul>
+</td>
+</tr>
+
+<tr><td colspan=2 height=10> </td></tr>
+-->
+
+</table>
+</center>
+
+*/

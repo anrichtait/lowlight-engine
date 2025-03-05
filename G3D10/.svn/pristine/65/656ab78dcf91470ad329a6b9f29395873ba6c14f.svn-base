@@ -1,0 +1,4 @@
+ArticulatedModel::Specification {
+//    scale = 0.01;
+    filename = "vive_1.5.zip/vr_controller_vive_1_5.obj";
+}

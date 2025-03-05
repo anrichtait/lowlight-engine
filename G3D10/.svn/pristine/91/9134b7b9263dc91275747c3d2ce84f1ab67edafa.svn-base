@@ -1,0 +1,49 @@
+/** 
+    Unsharp masking filter for sharpening an image that was blurred by a gaussian. See:
+
+    https://en.wikipedia.org/wiki/Unsharp_masking
+    https://en.wikipedia.org/wiki/Gaussian_function
+
+    This implementation is intended to be clear instead of fast.
+*/
+
+#include <g3dmath.glsl>
+
+uniform sampler2D source;
+uniform float     sigma;
+out Color3        dest; 
+
+float normalGaussian(float x, float s) {
+    return exp(-square(x / s) / 2.0) / (s * sqrt(2.0 * pi));
+}
+
+void main () {
+    int2 p = int2(gl_FragCoord.xy);
+
+    const int radius = 10;
+    float weightSum = 0.0;
+    Color3 colorSum = Color3(0, 0, 0);
+
+    float largeSigma = sigma * 0.25;
+    
+    // Standard deviation of the narrow gaussian
+    float smallSigma = sqrt(square(largeSigma) / 5.0);
+
+    for (int dx = -radius; dx <= radius; ++dx) {
+        for (int dy = -radius; dy <= radius; ++dy) {
+            int r2 = square(dx) + square(dy);
+            if (r2 <= square(radius)) {
+                int2 c = p + int2(dx, dy);
+                if ((c.x >= 0) && (c.y >= 0) && (c.x < g3d_FragCoordExtent.x) && (c.y < g3d_FragCoordExtent.y)) {
+                    float r = sqrt(float(r2));
+                    float weight = 2.5 * normalGaussian(r, smallSigma) - normalGaussian(r, largeSigma);
+                    weightSum += weight;
+                    colorSum += weight * texelFetch(source, c, 0).rgb;
+                } // on screen
+            } // in disk
+        } // dy
+    } // dx
+
+    // Normalize
+    dest = colorSum / weightSum;
+}

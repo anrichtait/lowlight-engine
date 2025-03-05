@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\glfw.lib\include\GLFW\glfw3.h" />
+    <ClInclude Include="..\external\glfw.lib\include\GLFW\glfw3native.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\external\glfw.lib\src\context.c" />
+    <ClCompile Include="..\external\glfw.lib\src\egl_context.c" />
+    <ClCompile Include="..\external\glfw.lib\src\init.c" />
+    <ClCompile Include="..\external\glfw.lib\src\input.c" />
+    <ClCompile Include="..\external\glfw.lib\src\monitor.c" />
+    <ClCompile Include="..\external\glfw.lib\src\osmesa_context.c" />
+    <ClCompile Include="..\external\glfw.lib\src\vulkan.c" />
+    <ClCompile Include="..\external\glfw.lib\src\wgl_context.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_init.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_joystick.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_monitor.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_thread.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_time.c" />
+    <ClCompile Include="..\external\glfw.lib\src\win32_window.c" />
+    <ClCompile Include="..\external\glfw.lib\src\window.c" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{145AA958-4FB6-4A12-8594-BB8FE0C40BD3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>glfwlib</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\external-library-release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetName>glfw</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\external\glew.lib\include;$(ProjectDir)..\external\glfw.lib\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_GLFW_USE_CONFIG_H;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>
+      </Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

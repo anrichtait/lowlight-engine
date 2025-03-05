@@ -1,0 +1,35 @@
+#version 430
+#ifdef GL_ARB_compute_variable_group_size
+#extension GL_ARB_compute_variable_group_size : enable
+#endif
+#include <g3dmath.glsl>
+
+layout(local_size_variable) in;
+
+layout(rgba32f) uniform readonly image2D newFrame;
+layout(rgba32f) uniform image2D accumulatedFrame;
+
+uniform int numFrames;
+
+
+void main() {
+
+    // These indices are out of bounds. If we don't clamp the x coordinate 
+    // it wraps around and overwrites subsequent lines. So return early.
+    if (gl_GlobalInvocationID.x >= g3d_FragCoordExtent.x) {
+        return;
+    }
+
+    ivec2 coord = ivec2(gl_GlobalInvocationID.xy);
+
+    vec3 newValue = imageLoad(newFrame, coord).xyz;
+
+    vec3 oldValue = imageLoad(accumulatedFrame, coord).xyz * (float)numFrames;
+
+    if (numFrames != 0) {
+        imageStore(accumulatedFrame, coord, vec4((newValue.xyz + oldValue.xyz) / float(numFrames + 1), 1.0f));
+    }
+    else {
+        imageStore(accumulatedFrame, coord, vec4(newValue, 1));
+    }
+}

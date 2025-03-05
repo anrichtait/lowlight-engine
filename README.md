@@ -3,8 +3,7 @@ Welcome to the *Low Light Game Engine*! This is a hobby project developed by [me
 
 
 > ⚠ **Stability Notice:**  
-> This is an **experimental** hobby project. It is **not yet ready** for serious game development and is **very feature-incomplete**. Expect frequent changes and breaking updates.  
-
+> This is an **experimental** hobby project. It is **not yet ready** for serious game development and is **very feature-incomplete**. Expect frequent changes and breaking updates. Due to licensing and other factors many files and folders have been excluded from this repo. Including (but not limited to) assets for the example programs, fmod library, old/deprecated features  
 
 ## Overview
 I am building my engine on top of the [G3D Innovation Engine](https://casual-effects.com/g3d/www/index.html). G3D is a commercial-grade 3D rendering engine that I will be using for mainly for it's rendering capabilities. 

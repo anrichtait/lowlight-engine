@@ -1,0 +1,16 @@
+ArticulatedModel::Specification {
+    filename = "bricks.zip/brick.obj";
+    stripMaterials = true;
+    scale = 0.01;
+    preprocess = {
+        moveCenterToOrigin();
+        setMaterial(all(), UniversalMaterial::Specification {
+            lambertian = "bricks.zip/lambertian2.jpg";
+            glossy = Texture::Specification {
+                filename = "bricks.zip/displacement2.jpg";
+                encoding = Color4(0.1, 0.1, 0.1, 0.1);
+            };
+            bump = "bricks.zip/displacement2.jpg";
+        });
+    };
+}

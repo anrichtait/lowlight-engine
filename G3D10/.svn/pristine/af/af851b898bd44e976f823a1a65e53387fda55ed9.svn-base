@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <None Include="..\Doxyfile" />
+    <None Include="..\installg3dwin.hta" />
+    <None Include="..\buildg3d">
+      <Filter>Build Scripts</Filter>
+    </None>
+    <None Include="..\buildg3d.bat">
+      <Filter>Build Scripts</Filter>
+    </None>
+    <None Include="..\bin\ice\library.py">
+      <Filter>Build Scripts</Filter>
+    </None>
+    <None Include="..\bin\ice\utils.py">
+      <Filter>Build Scripts</Filter>
+    </None>
+    <None Include="..\scripts\doxygen-glslfilter.py">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="..\scripts\fileheader.py">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="..\scripts\runpython">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="..\scripts\runpython.cmd">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="..\scripts\imageformat.py">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="..\scripts\svnrevision.py">
+      <Filter>Helper Scripts</Filter>
+    </None>
+    <None Include="props\external-library-debug.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\external-library-release.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\g3d-library-debug.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\g3d-library-release.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\g3d-tool-debug.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\g3d-tool-release.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\sample-debug.props">
+      <Filter>Shared Props</Filter>
+    </None>
+    <None Include="props\sample-release.props">
+      <Filter>Shared Props</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Helper Scripts">
+      <UniqueIdentifier>{570f91cf-1b85-4921-a5dd-2ba5560cd053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Build Scripts">
+      <UniqueIdentifier>{5bb7503f-f621-4ca2-bf82-c13910adac96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shared Props">
+      <UniqueIdentifier>{11e54045-e339-4262-b802-e35c640b648a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

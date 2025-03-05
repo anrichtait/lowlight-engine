@@ -1,0 +1,67 @@
+#version 460
+#extension GL_NV_ray_tracing : require
+#extension GL_GOOGLE_include_directive : enable
+
+struct hitPayload {
+    vec4 lambertian;
+    vec4 glossy;
+    vec4 emissive;
+    vec4 shadingNormal;
+    vec4 position;
+};
+
+layout(binding = 0, set = 0) uniform accelerationStructureNV topLevelAS;
+layout(binding = 1, set = 0, rgba8) uniform image2D image;
+layout(binding = 2, set = 0) uniform CameraProperties
+{
+    mat4 model;
+    mat4 view;
+    mat4 proj;
+    mat4 modelIT;
+    mat4 viewInverse;
+    mat4 projInverse;
+} cam;
+
+layout(binding = 5, set = 0, rgba32f) uniform image2D rayOrigins;
+layout(binding = 6, set = 0, rgba32f) uniform image2D rayDirections;
+
+layout(binding = 8, set = 0, rgba32f) uniform image2D outLambertian;
+layout(binding = 9, set = 0, rgba32f) uniform image2D outGlossy;
+layout(binding = 10, set = 0, rgba32f) uniform image2D outEmissive;
+layout(binding = 11, set = 0, rgba32f) uniform image2D outShadingNormal;
+layout(binding = 12, set = 0, rgba32f) uniform image2D outPosition;
+
+layout(location = 0) rayPayloadNV hitPayload hit;
+
+void main()
+{
+    vec4 origin = imageLoad(rayOrigins, ivec2(gl_LaunchIDNV.xy));
+    vec4 direction = imageLoad(rayDirections, ivec2(gl_LaunchIDNV.xy));
+
+    uint rayFlags = gl_RayFlagsNoOpaqueNV | gl_RayFlagsCullBackFacingTrianglesNV;
+    //uint rayFlags = gl_RayFlagsNoOpaqueNV;
+    uint cullMask = 0xff;
+    float tmin = origin.w;
+    float tmax = direction.w;
+
+    traceNV(topLevelAS, 
+            rayFlags, 
+            cullMask, 
+            0 /*sbtRecordOffset*/, 
+            0 /*sbtRecordStride*/,
+            0 /*missIndex*/, 
+            origin.xyz, 
+            tmin, 
+            direction.xyz, 
+            tmax, 
+            0 /*payload*/);
+
+
+        //imageStore(image, ivec2(gl_LaunchIDNV.xy), hit.shadingNormal);
+
+    imageStore(outLambertian, ivec2(gl_LaunchIDNV.xy), hit.lambertian);
+    imageStore(outGlossy, ivec2(gl_LaunchIDNV.xy), hit.glossy);
+    imageStore(outEmissive, ivec2(gl_LaunchIDNV.xy), hit.emissive);
+    imageStore(outShadingNormal, ivec2(gl_LaunchIDNV.xy), hit.shadingNormal);
+    imageStore(outPosition, ivec2(gl_LaunchIDNV.xy), hit.position);
+}

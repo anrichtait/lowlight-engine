@@ -1,0 +1,32 @@
+#version 430
+#include <g3dmath.glsl>
+
+// A = 0 for solid color and 1 for wire color and pull towards camera
+in Vector4 g3d_Vertex;
+
+// sRGB
+uniform Color3 solidColor;
+uniform Color3 edgeColor;
+
+// RGB
+out Color3 color;
+
+// RGB
+const Color3 fogColor = Color3(0.01);
+
+/** Make objects fade towards black with distance as a depth cue */
+float distanceDarken(float csZ) {
+    const float t = max(0.0f, abs(csZ) - 10.0f);
+    return exp(-t * 0.1f);
+}
+
+void main() {
+    Point3 csVertex = (g3d_ObjectToCameraMatrix * Vector4(g3d_Vertex.xyz, 1.0)).xyz;
+
+    // sRGB -> RGB
+    color = square(lerp(solidColor, edgeColor, g3d_Vertex.w));
+    color = lerp(fogColor, color, distanceDarken(csVertex.z));
+
+    // TODO: Transform towards the camera based on g3d_Vertex.w
+    gl_Position = Vector4(g3d_Vertex.xyz, 1.0) * g3d_ObjectToScreenMatrixTranspose;
+}

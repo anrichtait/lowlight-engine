@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\samples\deepGBufferRadiosity\source\App.h" />
+    <ClInclude Include="..\samples\deepGBufferRadiosity\source\DeepGBufferRadiosity.h" />
+    <ClInclude Include="..\samples\deepGBufferRadiosity\source\DeepGBufferRadiositySettings.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\samples\deepGBufferRadiosity\source\App.cpp" />
+    <ClCompile Include="..\samples\deepGBufferRadiosity\source\DeepGBufferRadiosity.cpp" />
+    <ClCompile Include="..\samples\deepGBufferRadiosity\source\DeepGBufferRadiositySettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\samples\cpuRealTimeRayTrace\realTimeRayTrace.Scene.Any" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\aoVisualization.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\colorBoost.glsl" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_blur.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_constants.glsl" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_DeepGBufferRadiosity.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_minify.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_nextBounce.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\DeepGBufferRadiosity\DeepGBufferRadiosity_reconstructCSZ.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\deferred.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\lambertianOnly.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\oct.glsl" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\Reference\SinglePassDeepGBuffer.geo" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\Reference\SinglePassDeepGBuffer.pix" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\Reference\SinglePassDeepGBuffer.vrt" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\utilities.glsl" />
+    <None Include="..\samples\deepGBufferRadiosity\data-files\shader\verticalSplitScreen.pix" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EE1D80DA-8967-4FD4-BAF8-AA6CB730C160}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>screenSpaceGlobalIllumination</RootNamespace>
+    <ProjectName>deepGbufferRadiosity</ProjectName>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\sample-debug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="props\sample-release.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+    </ClCompile>
+    <Link />
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

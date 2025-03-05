@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="googletest">
+      <UniqueIdentifier>{3b247efa-4ba0-4ae5-9770-2ff923129607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="googletest\include">
+      <UniqueIdentifier>{54253850-990a-4e1c-a2a1-0eba30238084}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="googletest\src">
+      <UniqueIdentifier>{464cad85-7e97-47cf-bfb1-cde0066b634b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\base">
+      <UniqueIdentifier>{b8ce1de3-5784-4299-8bff-157f4313316a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest_pred_impl.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest_prod.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-death-test.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-matchers.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-message.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-param-test.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-printers.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-spi.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-test-part.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\include\gtest\gtest-typed-test.h">
+      <Filter>googletest\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\googletest\src\gtest-internal-inl.h">
+      <Filter>googletest\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\unittest\main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\unittest\googletest\src\gtest.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-death-test.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-filepath.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-matchers.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-port.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-printers.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-test-part.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\googletest\src\gtest-typed-test.cc">
+      <Filter>googletest\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\base\unitmath.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\unittest\base\unitstring.cpp">
+      <Filter>Source Files\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

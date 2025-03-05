@@ -1,0 +1,1549 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{97dc342c-9265-435f-9ff4-b34a422106c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene Files">
+      <UniqueIdentifier>{fba19ea6-660b-41a2-9523-cadb42888d65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files\SVO">
+      <UniqueIdentifier>{de4fc0da-e01f-42d1-9b03-b4c821e306f6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\G3D-app.lib\source\BSPMAP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\BSPMAPLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\BumpMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\CameraControlWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DeveloperWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DirectionHistogram.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Discovery.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Draw.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\FileDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Film.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\FirstPersonManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\G3DGameUnits.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GaussianBlur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GConsole.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GFont.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiCheckBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiContainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiDropDownList.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiFunctionBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiLabel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiPane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiRadioButton.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiSlider.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiTabPane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiTextBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiTextureBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiTheme.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\IconSet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MD2Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MD2Model_load.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MD3Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ShadowMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Shape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Surface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ThirdPersonManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Tri.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UprightSplineManipulator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UserInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VideoInput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VideoOutput.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VideoRecordDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Widget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\PhysicsFrameSplineEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_pose.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_preprocess.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_serialize.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_3DS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_BSP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_cleanGeometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_heightfield.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_IFS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_OBJ.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_OFF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_PLY.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_PLY2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\AmbientOcclusion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DepthOfField.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SkyboxSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Scene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VisibleEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Surfel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\AmbientOcclusionSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DepthOfFieldSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\FilmSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UniversalSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UniversalSurfel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UniversalBSDF.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UniversalMaterial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\UniversalMaterial_Specification.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MotionBlurSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MotionBlur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VisualizeCameraSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VisualizeLightSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SceneEditorWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\HeightfieldModel_Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\HeightfieldModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_STL.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Entity_Track.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiFrameBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiScrollBar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiScrollPane.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\MarkerEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\TextureBrowserWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SVO.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ProfilerWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\LightingEnvironment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_ASSIMP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SlowMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\TemporalFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModelSpecificationEditorDialog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ControlPointEditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiWidgetDestructor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DefaultRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DebugTextWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_hair.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ParticleSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ParticleSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ParticleSystemModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\Film_CompositeFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\TriTreeBase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\NativeTriTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\NativeTriTree_Poly.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\EmbreeTriTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\BilateralFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\BilateralFilterSettings.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_VOX.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\PointModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\PointSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\PathTracer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ArticulatedModel_Schematic.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\FogVolumeSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\ScreenCapture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GuiMultiLineTextBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VRApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\FontModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\TextSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VoxelModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VoxelSurface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\XRWidget.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GameController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\TriTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\OptiXTriTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SoundEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\PythonInterpreter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\EmulatedGazeTracker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\SettingsWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\EmulatedXR.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DDGIVolume.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\GaussianMIPFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\DDGIVolumeSpecification.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\G3D-app.lib\source\VulkanTriTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\G3D-app.lib\source\Load3DS.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\BSPMAP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\BumpMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\CameraControlWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Component.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DeveloperWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DirectionHistogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Discovery.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Draw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\FileDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Film.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\FirstPersonManipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GaussianBlur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GConsole.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GFont.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\G3D-app.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiCheckBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiContainer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiControl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiFunctionBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiLabel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiNumberBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiPane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiRadioButton.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiSlider.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiTabPane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiText.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiTextBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiTextureBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiTheme.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Icon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\IconSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\MD2Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\MD3Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ShadowMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Shape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Surface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ThirdPersonManipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Tri.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\TriTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UprightSplineManipulator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UserInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VideoInput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VideoOutput.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VideoRecordDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Widget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\PhysicsFrameSplineEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ArticulatedModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\AmbientOcclusion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DepthOfField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SkyboxSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Entity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Scene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VisibleEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Surfel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\AmbientOcclusionSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DepthOfFieldSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\FilmSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UniversalSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UniversalSurfel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UniversalBSDF.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\UniversalMaterial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\MotionBlurSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\MotionBlur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VisualizeCameraSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VisualizeLightSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SceneEditorWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\HeightfieldModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiFrameBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiScrollBar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiScrollPane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\MarkerEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\TextureBrowserWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SceneVisualizationSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SVO.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ProfilerWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\LightingEnvironment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SlowMesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\TemporalFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ArticulatedModelSpecificationEditorDialog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ControlPointEditor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiWidgetDestructor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DefaultRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\BindlessTextureHandle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DebugTextWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ParticleSystem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ParticleSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ParticleSystemModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\TriTreeBase.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\NativeTriTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\EmbreeTriTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\BilateralFilterSettings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\BilateralFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiDropDownList.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\PointModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\PointSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\PathTracer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\FogVolumeSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\ScreenCapture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GuiMultiLineTextBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VRApp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\FontModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\TextSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VoxelModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VoxelSurface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D\G3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\XRWidget.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\debugDraw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GameController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\OptiXTriTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SoundEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\PythonInterpreter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\EmulatedGazeTracker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\SettingsWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\EmulatedXR.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DDGIVolume.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\GaussianMIPFilter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\DDGIVolumeSpecification.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\G3D-app.lib\include\G3D-app\VulkanTriTree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_reconstructCSZ.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_AO.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_blur.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_minify.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\MotionBlur\MotionBlur_gather.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Texture\Texture_copy.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_gbuffer.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_gbuffer.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\compatibility.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ArticulatedModel\ArticulatedModel_blitShader.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_vertex.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_vertex.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_depth.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_gbuffer.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\reconstructFromDepth.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\unlit.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\unlit.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_depthOnly.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\g3dmath.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\lightMap.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_depthPeel.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\depthPeel.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_SVO.geo">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_constants.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Light\Light.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\combineColorTexture.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GaussianBlur\GaussianBlur_apply.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_zoom.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SkyboxSurface\SkyboxSurface_gbuffer.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SkyboxSurface\SkyboxSurface_gbuffer.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SkyboxSurface\SkyboxSurface_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SkyboxSurface\SkyboxSurface_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_wideAA.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\BumpMap\BumpMap.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\textureFilter.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_vertexHelpers.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DepthOfField\DepthOfField_blur.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DepthOfField\DepthOfField_circleOfConfusion.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DepthOfField\DepthOfField_composite.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_toneMap.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_bloomExpose.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_composite.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GuiTextureBox\GuiTextureBox_Cubemap.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GuiTextureBox\GuiTextureBox_2D.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_depthPeel.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_depthPeel.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_gbuffer.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\LightingEnvironment\LightingEnvironment_LightUniforms.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\LightingEnvironment\LightingEnvironment_uniforms.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\LightingEnvironment\LightingEnvironment_environmentMapUniforms.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Texture\Texture_minMaxMean.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\MotionBlur\MotionBlur_neighborMinMax.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\MotionBlur\MotionBlur_tileMinMax.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\MotionBlur\MotionBlur_gatherLoop.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Texture\Texture.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Camera\Camera.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalMaterial\UniversalMaterial.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_modulateBackground.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_modulateBackground.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\noise.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\gradient.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GFont\GFont_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GFont\GFont_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GuiTheme\GuiTheme_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GuiTheme\GuiTheme_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SlowMesh\SlowMesh_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SlowMesh\SlowMesh_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\TemporalFilter\TemporalFilter_apply.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\reverseReprojection.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_reconstructCSZ.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_minify.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_AO.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_blur.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\default.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Draw\Draw_sphereSection.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Draw\Draw_sphereSection.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\screenSpaceRayTrace.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DefaultRenderer\DefaultRenderer_deferredShade.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Texture\Texture_singleChannelDiff.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_allocateNodesTopMipMap.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_base.glsl">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_buildInit.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_copyBrickBorder.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_downsampleValues.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_levelAllocToIndex.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_sampling.glsl">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_updateLevelSizeBuffer.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_util.glsl">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_writeNeighborPointers.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_writeVoxelFragValues.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_SVO.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_SVO.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO.glsl">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_allocateNodes.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_countToIndirectArgument.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_flagPopulatedChildren.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_renderRaycasting.pix">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_renderRaycasting.vrt">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_updateLevelIndexBuffer.glc">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_visualizeFragments.pix">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_visualizeFragments.vrt">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_visualizeNodes.geo">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_visualizeNodes.pix">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\SVO\SVO_visualizeNodes.vrt">
+      <Filter>Shader Files\SVO</Filter>
+    </None>
+    <None Include="..\data-files\shader\GBuffer\GBuffer2.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GBuffer\GBuffer.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_render.geo">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_stochasticDepthOnly.geo">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_stochasticDepthOnly.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_stochasticDepthOnly.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_wireframe.geo">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_wireframe.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_wireframe.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalMaterial\UniversalMaterial_sample.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\ParticleSurface\ParticleSurface_helpers.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_depthOnlyNonOpaque.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_depthOnlyNonOpaque.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\HeightfieldModel\HeightfieldModel_Tile_depthOnlyNonOpaque.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DefaultRenderer\DefaultRenderer_compositeWeightedBlendedOIT.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_packBilateralKey.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_packBilateralKey.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Light\Light_convertToVSM.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\octahedral.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalSurface\UniversalSurface_depthOnly.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DefaultRenderer\DefaultRenderer_OIT_writePixel.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DefaultRenderer\DefaultRenderer_downsampleNormal.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_effectsDisabledBlit.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DefaultRenderer\DefaultRenderer_upsampleOIT.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Light\Light_vsmFilter.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AlphaFilter.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\deferredHelpers.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\AmbientOcclusion\AmbientOcclusion_sample.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalMaterial\UniversalMaterial_shade.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\UniversalMaterial\UniversalMaterial_writeToGBuffer.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\BilateralFilter\BilateralFilter_apply.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\FogVolumeSurface\FogVolumeSurface_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\FogVolumeSurface\FogVolumeSurface_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Fireplace_Room.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Fireplace_Room_(Emissive_Windows).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Living_Room.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Living_Room_(Emissive_Windows).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Minecraft.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Salle_de_Bain.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_San_Miguel.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sibenik.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_Cloud.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_Motion.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_Opening_Door.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_Particles.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_White_Furnace_(lambertian).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_White_Furnace_(smoothness=0.5).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sponza_(Glossy).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sponza_(Statue).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sponza_(Volumetric_Shadows).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sports_Car.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sports_Car_(White).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Whiteroom.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Sponza.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Sponza_(White).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Test_Models.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box_(Glossy).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box_(Mirror).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box_(Spheres).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box_(Water).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box-empty-cyan-orange.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_temporalAA.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Fireplace_Room_(No_Glass).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_FXAA_13_quality.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\Film\Film_FXAA_13_performance.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sibenik_(Statue).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_VR_Gallery.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Heightfield.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Teapot.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Transparency.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Triangle.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Cubemap.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_VR_Holodeck.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Breakfast_Room.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Breakfast_Room_(Area_Lights).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Fireplace_Room_(Area_Lights).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Cornell_Box_(Area_Light).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Sponza_(Area_Light).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Sponza_(Glossy_Area_Lights).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Depth_of_Field.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Living_Room_(Area_Lights).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Bistro_Interior.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DepthOfField\DepthOfField.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Simple_Void.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_VR_Bedroom.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_San_Miguel_Low_Poly.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_San_Miguel_Low_Poly_Area_Light.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Roughness.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Light_Intensity.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_VR_Portaldeck.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\game\scene\G3D_AR_Mountain\G3D_AR_Mountain.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Refraction.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Simple_Cornell_Box_(Globe).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Bistro_Exterior_(Night).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Bistro_Exterior_(Day).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Animation_(Skeletal).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Area_Light_(Matte).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\..\data10\common\scene\G3D_Debug_Area_Light_(Glossy).Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\GuiTextureBox\GuiTextureBox_Arrows.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_computeProbeOffsets.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_copyProbeEdges.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_EncodeDDGIDistance.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_generateRays.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_probeVisualization.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_probeVisualization.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_updateProbeFlags.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\DDGIVolume\DDGIVolume_updateProbes.glc">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\..\data10\research\scene\G3D_Veach_Door.Scene.Any">
+      <Filter>Scene Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_render.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_render.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_vertex.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_vertexHelper.glsl">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_depthOnly.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_depthPeel.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_depthPeel.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_gbuffer.pix">
+      <Filter>Shader Files</Filter>
+    </None>
+    <None Include="..\data-files\shader\PointSurface\PointSurface_gbuffer.vrt">
+      <Filter>Shader Files</Filter>
+    </None>
+  </ItemGroup>
+</Project>

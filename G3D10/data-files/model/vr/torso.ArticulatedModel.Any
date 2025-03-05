@@ -1,0 +1,22 @@
+ArticulatedModel::Specification {
+    filename = "default-avatar.zip/torso.obj";
+    stripMaterials = true;
+
+    cleanGeometrySettings = ArticulatedModel::CleanGeometrySettings {
+        forceVertexMerging = false;
+        allowVertexMerging = false;
+        forceComputeNormals = true;
+        forceComputeTangents = false;
+        maxNormalWeldAngleDegrees = 70;
+        maxSmoothAngleDegrees = 90;
+    };
+
+    scale = 0.3;
+
+    preprocess = {
+        setCFrame(root(), CFrame::fromXYZYPRDegrees(0,-0.08,0.02,180));
+        setMaterial(all(), UniversalMaterial::Specification {
+            lambertian = Color3(0.1, 0.1, 0.1);
+        });
+    };
+}

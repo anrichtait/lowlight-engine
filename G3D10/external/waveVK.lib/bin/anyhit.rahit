@@ -1,0 +1,84 @@
+#version 460
+#extension GL_NV_ray_tracing : require
+#extension GL_EXT_nonuniform_qualifier : enable
+#extension GL_GOOGLE_include_directive : enable
+
+struct hitPayload {
+    vec4 lambertian;
+    vec4 glossy;
+    vec4 emissive;
+    vec4 shadingNormal;
+    vec4 position;
+};
+
+struct Material {
+    int texNIndex;
+    int tex0Index;
+    int tex1Index;
+    int tex2Index;
+    int tex3Index;
+
+    vec4 scaleN;
+    vec4 biasN;
+    vec4 scale0;
+    vec4 bias0;
+    vec4 scale1;
+    vec4 bias1;
+    vec4 scale2;
+    vec4 bias2;
+    vec4 scale3;
+    vec4 bias3;
+};
+layout(binding = 0, set = 0) uniform accelerationStructureNV topLevelAS;
+
+
+struct Vertex
+{
+    vec3 pos;
+    vec3 nrm;
+    vec4 tan;
+    vec2 texCoord;
+    int matIndex;
+};
+
+
+layout(binding = 3, set = 0) buffer Vertices { Vertex v[]; }
+vertices[];
+layout(binding = 4, set = 0) buffer Indices { uint i[]; }
+indices[];
+
+layout(binding = 7, set = 0) buffer TransformsInverseTranspose {
+    mat4 i[];    
+}
+transformInverseTranspose;
+
+layout(binding = 13, set = 0) uniform sampler2D[] textureSamplers;
+
+layout(binding = 14, set = 0) buffer Materials {
+    Material m[];
+}
+materials;
+
+layout(location = 0) rayPayloadInNV hitPayload hit;
+layout(location = 2) rayPayloadNV bool isShadowed;
+
+hitAttributeNV vec3 attribs;
+
+void main()
+{
+	ivec3 ind = ivec3(indices[gl_InstanceID].i[3 * gl_PrimitiveID], indices[gl_InstanceID].i[3 * gl_PrimitiveID + 1],
+		indices[gl_InstanceID].i[3 * gl_PrimitiveID + 2]);
+
+    Vertex v0 = vertices[gl_InstanceID].v[ind.x];
+    Vertex v1 = vertices[gl_InstanceID].v[ind.y];
+    Vertex v2 = vertices[gl_InstanceID].v[ind.z];
+
+	const vec3 barycentrics = vec3(1.0 - attribs.x - attribs.y, attribs.x, attribs.y);
+	vec2 texcoord = v0.texCoord * barycentrics.x + v1.texCoord * barycentrics.y + v2.texCoord * barycentrics.z;
+
+    float alpha = (texture(textureSamplers[materials.m[gl_InstanceID].tex0Index - 7], texcoord)).w * materials.m[gl_InstanceID].scale0.w + materials.m[gl_InstanceID].bias0.w;
+
+	if (alpha < 0.5f) {
+		ignoreIntersectionNV();
+	}
+}

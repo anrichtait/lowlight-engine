@@ -1,0 +1,33 @@
+        **assimp**
+        5.3.1
+
+# Upgrading to 5.3.1
+
+1. Copied over the `code`, `contrib`, and `include` directories
+    - Left out the other directories providing things such as tools, tests, scripts, etc. since
+      those directories seem more for developing assimp whereas G3D is using it as a library.
+2. Deleted third party software under the `contrib` directory that is redundant or not used:
+    - `draco` since it isn't something used by G3D and is not necessary to the core of the library
+    -  `android-cmake` since G3D does not build on android as of the upgrade
+    - `googletest` since we already have it under `unittest`
+    - `zip` and `zlib` are already libraries in G3D
+3. Had to specify new additional include directories in the assimp.lib project properties
+    - Added based on the when the compiler was unable to find them
+4. Deleted `.in` extension off of `assimp.lib/revision.h` and `assimp.lib/include/assimp/config.h`
+    - This was preventing building
+5. Any direct code changes have a comment block above them labeled "G3D Change" and a short description.
+   The changes end with an `/* END G3D CHANGE */` comment.
+    - In `/assimp.lib/include/assimp/config.h` starting at line 1128 I commented out `#cmakedefine` preprocessor
+      since we are not using cmake to build, this was throwing an error before.
+    - In `/assimp.lib/revision.h` I made GitVersion be 0 and GitBranch be an empty string while also hardcoding 
+      the version numbers since the implemented syntax seemed also dependent on cmake. This was also already 
+      removed in the previous assimp.lib G3D integration
+6. I removed `D3MFExporter.cpp` and `D3MFExporter.h` from the assimp.lib build because it was removed in the 
+   previous G3D assimp integration.
+    - It seemed to just not want to build properly and is not even used
+7. On linux, I was running into a linker error with an undefined reference to StackAllocator::g_maxBytesPerBlock 
+   declared and defined in StackAllocator.h. To fix this, I just redefined g_maxBytesPerBlock in the 
+   StackAllocator::Allocate implementation.
+
+
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js"></script><script src="https://casual-effects.com/markdeep/latest/markdeep.min.js"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

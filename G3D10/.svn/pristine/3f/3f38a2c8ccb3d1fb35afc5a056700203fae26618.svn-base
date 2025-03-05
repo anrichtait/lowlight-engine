@@ -1,0 +1,203 @@
+
+/* -*- c++ -*- */
+{ 
+    entities = { 
+        camera = Camera { 
+            canChange = false; 
+            depthOfFieldSettings = DepthOfFieldSettings { 
+                enabled = false; 
+                farBlurRadiusFraction = 0.01; 
+                farBlurryPlaneZ = -120; 
+                farSharpPlaneZ = -11; 
+                focusPlaneZ = -10; 
+                lensRadius = 0.01; 
+                model = "ARTIST"; 
+                nearBlurRadiusFraction = 0.01; 
+                nearBlurryPlaneZ = -0.1; 
+                nearSharpPlaneZ = -1; 
+                reducedResolutionFactor = 1; 
+            }; 
+            
+            filmSettings = FilmSettings { 
+                antialiasingEnabled = true; 
+                antialiasingFilterRadius = 0; 
+                antialiasingHighQuality = false; 
+                bloomRadiusFraction = 0.009; 
+                bloomStrength = 0.1; 
+                debugZoom = 1; 
+                effectsEnabled = true; 
+                gamma = 2.2; 
+                sensitivity = 1; 
+                temporalAntialiasingEnabled = false; 
+                toneCurve = Spline { 
+                    control = ( 0, 0.0787234, 0.306383, 0.808511, 0.925532 ); 
+                    extrapolationMode = "LINEAR"; 
+                    finalInterval = -1; 
+                    interpolationMode = "CUBIC"; 
+                    time = ( 0, 0.169565, 0.32174, 0.743478, 1 ); 
+                }; 
+                
+                vignetteBottomStrength = 0.05; 
+                vignetteSizeFraction = 0.17; 
+                vignetteTopStrength = 0.5; 
+            }; 
+            
+            frame = CFrame::fromXYZYPRDegrees(1.2114, 1.3802, 4.023, 10.339, 5.727, 0 ); 
+            motionBlurSettings = MotionBlurSettings { 
+                enabled = true; 
+                exposureFraction = 0.75; 
+                maxBlurDiameterFraction = 0.1; 
+                numSamples = 15; 
+            }; 
+            
+            overridePixelOffset = true; 
+            projection = Projection { 
+                farPlaneZ = -50; 
+                fovDegrees = 60; 
+                fovDirection = "VERTICAL"; 
+                nearPlaneZ = -0.1; 
+                pixelOffset = Vector2(-0.25, 0.166667 ); 
+            }; 
+            
+            visualizationScale = 1; 
+        }; 
+        
+        ceilingLight = Light { 
+            attenuation = ( 0, 0, 1 ); 
+            bulbPower = Power3(150000 ); 
+            canChange = false; 
+            enabled = true; 
+            frame = CFrame::fromXYZYPRDegrees(0, 100, 1, 0, -90, 0 ); 
+            nearPlaneZLimit = -95; 
+            producesDirectIllumination = true; 
+            producesIndirectIllumination = true; 
+            rectangular = true; 
+            shadowMapBias = 0.02; 
+            shadowMapSize = Vector2int16(1024, 1024 ); 
+            shadowsEnabled = true; 
+            spotHalfAngleDegrees = 3.7; 
+            spotHardness = 0; 
+            type = "SPOT"; 
+            visible = false; 
+        }; 
+        
+        doorBounceLight = Light { 
+            attenuation = ( 0, 0, 2 ); 
+            bulbPower = Power3(100, 20, 0 ); 
+            canChange = false; 
+            enabled = true; 
+            extent = Vector2(2.1, 2.7 ); 
+            frame = CFrame::fromXYZYPRDegrees(-0.00719561, 1.08038, -5.61838, -180, -5.49104 ); 
+            nearPlaneZLimit = -1; 
+            rectangular = false; 
+            shadowsEnabled = false; 
+            spotHalfAngleDegrees = 88; 
+            spotHardness = 0; 
+            type = "AREA"; 
+            visible = true; 
+        }; 
+        
+        doorLight = Light { 
+            attenuation = ( 0, 0, 1 ); 
+            bulbPower = Power3(100 ); 
+            canChange = false; 
+            enabled = true; 
+            extent = Vector2(1.5, 1 ); 
+            frame = CFrame::fromXYZYPRDegrees(0, 2.45, -4.8, 0, -90, 0 ); 
+            rectangular = false; 
+            shadowsEnabled = false; 
+            spotHalfAngleDegrees = 85; 
+            spotHardness = 0; 
+            type = "AREA"; 
+            visible = false; 
+        }; 
+        
+        holodeck = VisibleEntity { 
+            canChange = false; 
+            castsShadows = false; 
+            frame = CFrame::fromXYZYPRDegrees(0, 0, 0, 180 ); 
+            model = "holodeckModel"; 
+        };         
+        metalCrate = VisibleEntity { 
+            frame = CFrame::fromXYZYPRDegrees(-2.65286, 0.487389, -0.934997, -27.0461 ); 
+            model = "metalCrateModel"; 
+        }; 
+        
+        ramp = 
+        VisibleEntity { 
+            frame = CFrame::fromXYZYPRDegrees(2.01066, -0.0209644, 1.46471, -18.5334, 17.678, 0.0756305 ); 
+            model = "rampModel"; 
+        }; 
+        
+ 	seymour = VisibleEntity { 
+            frame = CFrame::fromXYZYPRDegrees(0, 3, 0, 0, -4, 0 ); 
+            model = "seymourModel"; 
+        };
+
+	seymour2 = VisibleEntity { 
+            frame = CFrame::fromXYZYPRDegrees(0, 3, 1, 0, -4, 0 ); 
+            model = "seymourModel"; 
+        };
+    }; 
+    
+    lightingEnvironment = LightingEnvironment { 
+        ambientOcclusionSettings = AmbientOcclusionSettings { 
+            bias = 0.01; 
+            blurRadius = 2; 
+            blurStepSize = 1;
+            depthPeelSeparationHint = 0.2; 
+            edgeSharpness = 1; 
+            enabled = true; 
+            highQualityBlur = true; 
+            intensity = 0.791666; 
+            monotonicallyDecreasingBilateralWeights = false; 
+            numSamples = 6; 
+            packBlurKeys = false; 
+            radius = 0.4; 
+            temporalFilterSettings = TemporalFilter::Settings { 
+                falloffEndDistance = 0.07; 
+                falloffStartDistance = 0.05; 
+                hysteresis = 0.95; 
+            }; 
+            
+            temporallyVarySamples = true; 
+            useDepthPeelBuffer = false; 
+            useNormalBuffer = true; 
+            useNormalsInBlur = true; 
+            zStorage = "HALF"; 
+        }; 
+        
+        environmentMap = Texture::Specification { 
+            encoding = Texture::Encoding { 
+                readMultiplyFirst = 0.028; 
+            }; 
+            
+            filename = "cubemap/whiteroom/whiteroom-*.png"; 
+        }; 
+        
+    }; 
+    
+    models = { 
+        holodeckModel = "model/holodeck/holodeck.ArticulatedModel.Any"; 
+        metalCrateModel = ArticulatedModel::Specification { 
+            filename = "model/crate/crate.obj"; 
+            scale = 1; 
+        }; 
+        
+        rampModel = ArticulatedModel::Specification { 
+            filename = "model/cube/cube.obj"; 
+            preprocess = { 
+                transformGeometry(root(), Matrix4::scale(1.5, 1, 3 ) ) }; 
+            
+        };
+
+ 	seymourModel = ArticulatedModel::Specification { 
+            filename = "model/seymour/Seymour_triangulate.dae"; 
+            scale = 15; 
+        
+    }; 
+        
+    }; 
+    
+    name = "Astroboy"; 
+} 

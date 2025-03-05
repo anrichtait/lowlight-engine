@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\external\glslang\SPIRV\SPVRemapper.cpp" />
+    <ClCompile Include="..\external\glslang\SPIRV\doc.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\external\glslang\SPIRV\SPVRemapper.h" />
+    <ClInclude Include="..\external\glslang\SPIRV\doc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{438181BD-7F41-3D54-B1E5-C14D3A4D1A40}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

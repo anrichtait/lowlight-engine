@@ -1,0 +1,92 @@
+                            **Sync and Launch G3D builds across platforms**
+
+# Windows to Windows Workflow
+## Set Environment Variables
+1. On your local machine, set a variable `G3D10_REMOTE_MACHINE` to be the account and address of your remote machine (e.g. `user@HQ-XXXXXXX.network.local`)
+2. On your local machine, set a variable `G3D10_SERVICE_DISOVERY` to be the address of the computer running matchmaker with a specified port (e.g. if running matchermaker on local machine: `localhost:6175`, else `HQ-YYYYYYY.network.local:6175`)
+3. On your remote machine, set a variable `G3D10_SERVICE_DISCOVERY` to be the address of the computer running matchmaker (e.g. `HQ-ZZZZZZZ.network.local:6175`)
+
+## Setup SSH Authentication between computers
+### SSH setup (remote machine)
+1. Install OpenSSH Server (Windows Settings -> System -> Optional Features -> Add a Feature)
+2. Start OpenSSH Server [Windows Tutorial](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse?tabs=powershell)
+3. Make sure `PubKeyAuthentication yes` is uncommented in `C:ProgramData/ssh/sshd_config`
+4. Double check Firewall rules (Allow Apps through Windows Firewall -> Change Settings -> OpenSSH Server)
+
+### SSH setup (local machine)
+1. Make sure [WSL](https://learn.microsoft.com/en-us/windows/wsl/install) is installed
+2.  Verify WSL can connect to the network while on VPN (if you're not using VPN, you can skip this step). If not
+    1. Run PowerShell as Admin. 
+    2. For GlobalProtect, run 
+        ~~~~~
+        Get-NetIPInterface -InterfaceAlias "vEthernet (WSL)" | Set-NetIPInterface -InterfaceMetric 1 >> Get-NetAdapter | Where-Object {$_.InterfaceDescription -like "PANGP*"}| Set-NetIPInterface -InterfaceMetric 6000
+        ~~~~~
+        see [the discussion thread](https://live.paloaltonetworks.com/t5/globalprotect-discussions/globalprotect-blocks-the-network-traffic-of-wsl2/td-p/354962)
+    3. Note: If you get the error:
+        ~~~~~
+        Get-NetIPInterface : No MSFT_NetIPInterface objects found with property 'InterfaceAlias' equal to 'vEthernet (WSL)'.  Verify the value of the property and retry. 
+        ~~~~~
+        run `ipconfig` and use the InterfaceAlias with WSL in the name. For a different machine, this was `vEthernet (WSL (Hyper-V firewall))`
+        
+3.  Make sure your Ubuntu distribution is your default distribution (this was verified with 22.04)
+4.  Do the following steps in WSL: 
+    1. Create your SSH keys. Do not use RSA, as RSA is not allowed by OpenSSH
+    2. Add your keys to ssh-agent 
+        ~~~~~
+        eval $(ssh-agent -s)
+        ssh-add
+        ~~~~~
+    3.  Send your public key to your remote system. You must already have previous access to the remote machine and be able to authenticate with a password. [Steps adapted from Microsoft](https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement)
+        
+        Note: G3D10_REMOTE_MACHINE is a Windows environment variable and is not available in WSL unless you set it 
+        
+        a. Run this command if remote user account IS an admin 
+            ~~~~~
+            # Get the public key file generated previously on your client (replace id_ed25519 if you used another public-key algorithm)
+            authorizedKey=$(cat $HOME/.ssh/id_ed25519.pub)
+            # Generate the PowerShell to be run remote that will copy the public key file generated previously on your client to the authorized_keys file on your server
+            remotePowershell="powershell Add-Content -Force -Path \$env:ProgramData\ssh\administrators_authorized_keys -Value $authorizedKey;icacls.exe \"\$env:ProgramData\ssh\administrators_authorized_keys\" /inheritance:r /grant \"Administrators:F\" /grant \"SYSTEM:F\""
+            # Connect to your server and run the PowerShell using the $remotePowerShell variable (G3D10_REMOTE_MACHINE should be a Windows env var, so it doesn't show up in WSL by default)
+            ssh account@remoteMachine $remotePowershell
+            ~~~~~
+        b. Else run this command if remote user account IS NOT an admin 
+            ~~~~~
+            # Get the public key file generated previously on your client (replace id_ed25519 if you used another public-key algorithm)
+            authorizedKey=$(cat $HOME/.ssh/id_ed25519.pub)
+            # Generate the PowerShell to be run remote that will copy the public key file generated previously on your client to the authorized_keys file on your server
+            remotePowershell="powershell New-Item -Force -ItemType Directory -Path \$env:USERPROFILE\.ssh; Add-Content -Force -Path \$env:USERPROFILE\.ssh\authorized_keys -Value $authorizedKey"
+            # Connect to your server and run the PowerShell using the $remotePowerShell variable (G3D10_REMOTE_MACHINE should be a Windows env var, so it doesn't show up in WSL by default)
+            ssh account@remoteMachine $remotePowershell
+            ~~~~~
+    4. Run `wsl ssh $env:G3D10_REMOTE_MACHINE` from Powershell to verify that the setup is correctly
+!!! Warning
+    If you get asked for a password, you didn't put your public key in the right authorized keys file
+            
+    - Verify that you followed the correct commands for an admin account vs a non-admin account
+            
+    - your sshd_config has public key authentication enabled
+
+## Set Up Project In Visual studio
+1. Using netchat as the example (prop template), you will have to add project specific flags to the pre/post-build, pre-run steps (Address of the other machine, matchmaking settings, etc.) or else the build will fail. Passing these in is a little less tedious than changing environment variables because that might require restarting Visual studio
+2. Pushing F5 will prompt a pre-build script, build and run the project, and prompt a post-build script.
+3. In the pre-build step:
+    1. Matchmaker will spawn locally
+    2. The script will check that the remote machine's environment variable is set to point to matchmaker
+    3. Data files will be synced to the specified remote location
+4. Once netchat is built and running, it should appear in the matchmaker gui
+5. In the post-build script,
+    1. Build files are synced to its corresponding remote location
+    2. The program binary and its direct dependencies are synced to its corresponding remote location
+    3. Here a remote launch should occur but currently this does not work with programs that have GUIs
+    4. The program name is recorded in a temporary file used by a cleanup script that can be manually ran to terminate the remote process
+
+<style>
+    body {
+        max-width: 50em
+    }
+
+    .md code, .md pre.tilde {
+        background: #F4F4F4
+    }
+</style>
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

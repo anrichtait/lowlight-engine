@@ -1,0 +1,8 @@
+ArticulatedModel::Specification {
+    filename = "rift_cv1.zip/oculus_cv1_controller_left.obj";
+	stripMaterials = true;
+	preprocess = {
+    	/* Used to load the glossy/alpha from a separate file, allowing it to be stored more efficiently in JPG */
+		setMaterial(all(), #include("rift_cv1.zip/left.UniversalMaterial.Any"));		
+	};
+}

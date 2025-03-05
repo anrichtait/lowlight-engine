@@ -1,0 +1,376 @@
+                  **G3D 10 Build System Instructions**
+
+Overview
+==========================================================================
+
+G3D builds with a Python script named "`buildg3d`". All of the software required for building
+and using G3D is available for free on all platforms.
+
+Building G3D takes about 20 minutes on a recent desktop computer. The source code repository
+contains all of the library dependencies. Once you've built G3D, you can update to a newer
+version in a few minutes as an incremental build.
+
+There are two common ways to build G3D:
+
+local
+: You're developing local to the same machine that you're building G3D on.
+  You might want to single-step from your code into G3D source code when debugging.
+  You want fast incremental builds of G3D when you update to get the latest patches.
+  Set your include and data directories to the source tree as described below and use `buildg3d
+  local` to compile the library.
+
+distrib
+: You're building the library for distribution as a binary to other developers, such as
+  students in a university course.  Set your include and data directories to the source tree as
+  described below and use `buildg3d distrib` to compile the library. Have your other developers
+  set their environment as described in the Dependent Developers section.
+
+If you are experienced with building software libraries and using version control, then you may
+want to read the Advanced section first, which describes alternative ways of building G3D to
+reduce your initial download size or deploy precompiled G3D binaries across multiple developers.
+
+Run "`buildg3d help`" at the command line for more information about the build sytem.
+
+Join our forum https://groups.google.com/forum/#!forum/g3d-users and post to
+g3d-users@googlegroups.com with questions about the library or build system.
+
+
+Windows Automated
+==========================================================================
+
+**G3D now provides an installer script for Windows.
+Download <a href="https://casual-effects.com/g3d/www/installg3d.cmd" download>installg3d.cmd</a>
+and double-click on it.**
+
+It will automatically download, install, and configure all of the build tools needed, including
+Python, SVN, and Visual Studio. The installer can be safely re-run multiple times if it fails
+or rebooting is required by the tools.
+
+_If the installer does not work with your system or you require an offline installation,
+then follow the instructions below._
+
+Source Code
+=======================================================================
+
+G3D contains a main repository directory of code and documentation
+named *G3D10* and a series of auxiliary asset repository directories in
+the *data10* directory. 
+
+You can [browse the repository](https://sourceforge.net/p/g3d/code/HEAD/tree/) from the top of tree
+or revision history.
+
+Full Library
+-------------------
+You can check out the entire library (10 GB) anonymously using:
+
+~~~~~~~~
+svn co svn://svn.code.sf.net/p/g3d/code/ g3d
+~~~~~~~
+
+...or with a SourceForge username using:
+
+~~~~~~~~
+svn co --username=USERNAME svn+ssh://USERNAME@svn.code.sf.net/p/g3d/code/ g3d
+~~~~~~~~
+
+...or you can check out just the subdirectories that you need. For example
+`svn://svn.code.sf.net/p/g3d/code/G3D10` is just the library source code, without the large
+asset packs. 
+
+If you use the svn `https://` protocol and receive errors such as
+`svn: E175002: Unexpected HTTP status 504 'Gateway Time-out'`, just
+run `svn cleanup` and then `svn update` to continue. This should not
+happen with the `svn://` protocol.
+
+For reference when performing a partial checkout, the top level directory structure is:
+
+***********************************************************************
+*   g3d                                                               *
+*    |                                                                *
+*    +-- G3D10                                                        *
+*    |                                                                *
+*    +-- data10                                                       * 
+*    |     |                                                          * 
+*    |     +-- common                                                 * 
+*    |     +-- game                                                   * 
+*    |     '-- research                                               * 
+*    |                                                                *
+*    '-- www                                                          *
+***********************************************************************
+
+Minimum Download
+---------------------
+
+G3D includes common asset files for making games, demos, and research projects, as well as for
+its own sample programs and automated tests.  The asset packs are large, so they are in a
+separate subdirectory tree from the source code.
+
+The minimal installation (about 300 MB) to be able to run the sample programs is:
+
+~~~~~~~~ bash
+svn co --depth immediates https://svn.code.sf.net/p/g3d/code/ g3d
+svn up --set-depth immediates g3d/data10
+svn up --set-depth infinity g3d/G3D10
+svn up --set-depth infinity g3d/data10/common
+~~~~~~~~
+
+You can then later execute the following from your g3d directory if you want the additional data packs:
+
+~~~~~~~~ bash
+svn up --set-depth infinity data10/research
+svn up --set-depth infinity data10/game
+~~~~~~~~
+
+
+Windows Manual
+==========================================================================
+
+Requirements
+-------------------------------------------------------------------------
+
+1. 64-bit Windows 10 or 11
+2. [Python 3.10.4](https://www.python.org/ftp/python/3.10.4/python-3.10.4-amd64.exe download="python-3.10.4-amd64.exe")
+   - During installation, check the box to have Python added to your path. This is not the default.
+3. Visual Studio 2022, either the Professional or the
+   [free Community version](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030 target="_blank")
+   - Select the "C++ Workload" inside the installer
+   - At Tools ==> Options ==> Text Editor ==> File Extension, map the following extensions to the
+     "Microsoft Visual C++" editor: `any`, `geo`, `glsl`, `pix`, `vrt`
+   - (Optional) At Tools ==> Options ==> Text Editor ==> C/C++, select Smart Indenting, Tab Size = 4, and Insert spaces
+4. The [TortoiseSVN 1.9.5](https://downloads.sourceforge.net/project/tortoisesvn/1.9.5/Application/TortoiseSVN-1.9.5.27581-x64-svn-1.9.5.msi?r=https%3A%2F%2Ftortoisesvn.net%2Fdownloads.html&ts=1497747106&use_mirror=pilotfiber target="_blank") subversion client
+   - During installation, select the **command line tools** as well as the GUI. This
+     is not the default.
+5. A directory for G3D, such as `c:\g3d`, on a disk with 10 GB of free space
+6. (Optional) Join the [g3d-users](https://groups.google.com/forum/#!forum/g3d-users
+   target="_blank") Google group to be notified of new features and receive support.
+
+
+Configure & Build
+-------------------------------------------------------------------------
+
+1. Set your **system** variable `g3d` to the location that you'd like to be the
+   root of the G3D tree (such as `c:\g3d`). In Windows 10, do this by &#9881; ==> System ==> About ==> System Info ==> Advanced System Settings ==> Environment Variables...
+   (or by searching for "Environment Variables" in the start menu search)
+
+2. Set the **user** environment variable `G3D10DATA` to
+   `%g3d%\G3D10\data-files;%g3d%\data10\common;%g3d%\data10\game;%g3d%\data10\research`
+
+3. Add `%g3d%\G3D10\build\bin` to the **front** of your **user** environment variable `PATH` (so that Windows can find
+   DLLs when launching your own programs)
+
+4. SVN check out `svn://svn.code.sf.net/p/g3d/code/` to `%g3d%` (do not use https, because it will time out). For developer checkout, see 8.
+
+5. At a command prompt in the `%g3d%\G3D10` directory, run:
+
+   `buildg3d.cmd local`
+
+6. For any project that depends on G3D, make sure to include this property sheet in your project: `%g3d%\G3D10\VisualStudio\props\developer-build-paths.props`. This can be done
+    through the Visual Studio IDE (View ==> Other Windows ==> Property Manager, [Your Project File] ==> Add Existing Property Sheet. Add `%g3d%\G3D10\VisualStudio\props\developer-build-paths.props` and reload Visual Studio).
+   The G3D sample project "starter" includes this property sheet automatically.
+
+7. See the new project guide at http://casual-effects.com/g3d/G3D10/build/manual/guidenewproject.html
+   for information on how to create your own programs that use G3D.
+
+8. If you want to be able to commit changes back to the repo, you have to be added as a developer on SourceForge by Morgan. Once done, you can checkout with:
+
+		`svn checkout svn+ssh://SVNUSERNAME@svn.code.sf.net/p/g3d/code/ %g3d%` or `svn checkout --username=SVNUSERNAME svn+ssh://USERNAME@svn.code.sf.net/p/g3d/code/ %g3d%`
+
+   When prompted for your password, use your SourceForge password, unless you've specifically set up SSH keys, in which case it will be your SSH key password. NOTE: if using TortoiseSVN, you will be prompted multiple times for your password during the checkout process. This isn't your password failing, it is Tortoise making multiple separate calls to SVN and not caching your password. You'll later be able to tell it to cache your password.
+
+
+_You can also make a local build on Windows using the Visual Studio IDE once you've configured your
+environment as described above. Beware that it uses pre-build steps that invoke Python scripts for
+some generated code files._
+
+
+macOS
+=========================================================================
+
+Beware that because macOS video drivers are produced by Apple as part of the operating system and Apple has
+deprecated open graphics standards, they lag behind the features on Windows by several years.
+
+The G3D build on macOS uses legacy support to emulate these features for you. **If you have a
+choice, we recommend developing on Windows.** On an Intel Mac, you can reboot your machine
+using Bootcamp to do this on the same hardware and unlock its full graphics potential.
+
+
+Requirements
+-------------------------------------------------------------------------
+
+1. OS X 10.12.2 or later
+2. [Python 3.10.4](https://www.python.org/downloads/release/python-3104/ target="_blank")
+3. LLVM 8.0.0 and clang++, from [Xcode](https://developer.apple.com/xcode/ target="_blank")
+4. [yasm 1.3](http://www.macports.org/ports.php?by=name&substr=yasm target="_blank") via macports
+5. [Exuberant-ctags](http://www.macports.org/ports.php?by=library&substr=ctags target="_blank") via macports
+5. A directory for G3D, such as `~/g3d`, and set a `g3d` environment variable to its path.
+6. Consider joining [g3d-users](https://groups.google.com/forum/#!forum/g3d-users
+   target="_blank") Google group to be notified of new features and receive support.
+
+
+Configure & Build
+-------------------------------------------------------------------------
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bash
+export g3d=### your choice! Frequently: /Users/$USER/g3d ###
+export G3D10DATA=$g3d/G3D10/data-files:$g3d/data10/common:$g3d/data10/game:$g3d/data10/research
+export INCLUDE=$g3d/G3D10/external/glew.lib/include:$g3d/G3D10/external/glfw.lib/include:$g3d/G3D10/external/civetweb.lib/include:$g3d/G3D10/external/qrencode.lib/include:$g3d/G3D10/external/zlib.lib/include:$g3d/G3D10/external/physx/include:$g3d/G3D10/G3D-base.lib/include:$g3d/G3D10/G3D-gfx.lib/include:$g3d/G3D10/G3D-app.lib/include:$g3d/G3D10/external/tbb/include:$g3d/G3D10/external/glslang/glslang:$INCLUDE
+export LIBRARY=$g3d/G3D10/build/lib:$g3d/G3D10/build/bin:$LIBRARY
+export PATH=$PATH:$g3d/G3D10/bin:$g3d/G3D10/build/bin
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Listing [macosvars]: macOS environment variable assignments for `~/.bashrc`]
+
+1. Add the environment variable assignments from Listing [macosvars] to your `~/.bashrc` file
+
+2. Ensure that your `~/.bash_profile` contains the line `source ~/.bashrc`
+
+3. Check out the source tree with:
+
+   `svn co svn://svn.code.sf.net/p/g3d/code/ $g3d`
+
+4. At a command prompt in the `$g3d/G3D10` directory, run:
+
+   `./buildg3d lib data tools`
+
+5. See the new project guide at https://casual-effects.com/g3d/G3D10/build/manual/guidenewproject.html
+   for information on how to create your own programs that use G3D.
+
+
+Once you've built G3D, you can compile any of the sample programs or your own by running
+`icompile` in the directory containing that project. The iCompile script is distributed as part
+of G3D, so you already have it. You do not need to write Makefiles or Xcode project files
+unless you _want_ to.
+
+
+Linux
+============================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bash
+sudo apt install apt-utils subversion clang doxygen xorg-dev build-essential libgtk-3-dev exuberant-ctags yasm libzip-dev freeglut3-dev lldb
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Listing [linuxpkg]: Linux packages required for building G3D]
+
+<br>
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bash
+export g3d=### your choice! Frequently: /Users/$USER/Projects/g3d ###
+export G3D10DATA=$g3d/G3D10/data-files:$g3d/data10/common:$g3d/data10/game:$g3d/data10/research
+export INCLUDE=$g3d/G3D10/external/glew.lib/include:$g3d/G3D10/external/glfw.lib/include:$g3d/G3D10/external/civetweb.lib/include:$g3d/G3D10/external/qrencode.lib/include:$g3d/G3D10/external/zlib.lib/include:$g3d/G3D10/external/physx/include:$g3d/G3D10/G3D-base.lib/include:$g3d/G3D10/G3D-gfx.lib/include:$g3d/G3D10/G3D-app.lib/include:$g3d/G3D10/external/tbb/include:$g3d/G3D10/external/glslang/glslang:$INCLUDE
+export LIBRARY=$g3d/G3D10/build/lib:$g3d/G3D10/build/bin:$LIBRARY
+export PATH=$PATH:$g3d/G3D10/bin:$g3d/G3D10/build/bin
+export LD_LIBRARY_PATH=$g3d/G3D10/build/bin:$LD_LIBRARY_PATH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Listing [linuxvars]: Linux environment variable assignments for `~/.bashrc`]
+
+1. Install the packages from Listing [linuxpkg].
+
+2. Add the environment variable assignments from Listing [linuxvars] to your `~/.bashrc` file
+
+3. Ensure that your `~/.bash_profile` contains the line `source ~/.bashrc`
+
+4. Restart your Terminal session, or reboot
+
+5. For *anonymous SVN*, check out the source tree with:
+
+    `svn co svn://svn.code.sf.net/p/g3d/code/ $g3d`
+
+   For *registered SourceForge* user access, you can instead use:
+
+     `svn checkout --username=<sfusername> svn+ssh://<sfusername>@svn.code.sf.net/p/g3d/code/ g3d`
+
+6. At a command prompt, run:
+
+    `cd $g3d/G3D10`
+
+    `./buildg3d lib data tools`
+
+7. See the new project guide at https://casual-effects.com/g3d/G3D10/build/manual/guidenewproject.html
+   for information on how to create your own programs that use G3D.
+
+
+Once you've built G3D, you can compile any of the sample programs or your own by running
+`icompile` in the directory containing that project. The icompile script is distributed as part
+of G3D, so you already have it. You do not need to write Makefiles unless you _want_ to.
+
+
+
+Advanced
+==========================================================================
+
+Dependent Developers
+-----------------------------------------------------------------
+
+Developers using a precompiled G3D build only need Visual Studio or clang++ installed. They do
+not need the full build system stack.
+
+### Windows
+
+1. Install Visual Studio 2022, either the Professional or the
+   [free Community version](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&passive=false&cid=2030 target="_blank")
+   - Select the "C++ Workload" inside the installer
+   - At Tools ==> Options ==> Text Editor ==> File Extension, map the following extensions to the
+     "Microsoft Visual C++" editor: `any`, `geo`, `glsl`, `pix`, `vrt`
+   - (Optional) At Tools ==> Options ==> Text Editor ==> C/C++, select Smart Indenting, Tab Size = 4, and Insert spaces
+
+2. (Optional) Join the [g3d-users](https://groups.google.com/forum/#!forum/g3d-users
+   target="_blank") Google group to be notified of new features and receive support.
+
+3. Set the following environment variables. In Windows 10, do this by &#9881; ==> System ==> About ==> System Info ==> Advanced System Settings ==> Environment Variables...
+   (or by searching for "Environment Variables" in the start menu search)
+  - Set `g3d` to root of your precompiled G3D build
+  - Set `G3D10DATA` to `%g3d%\data-files`
+  - Add `%g3d%\bin` to the **front** of your environment variable `PATH` (so that Windows can find
+   DLLs when launching your own programs)
+
+4. For any project that depends on G3D, make sure to include this property sheet in your project: `%g3d%\G3D10\VisualStudio\props\developer-build-paths.props`. This can be done
+    through the Visual Studio IDE (View ==> Other Windows ==> Property Manager, [Your Project File] ==> Add Existing Property Sheet. Add `%g3d%\G3D10\VisualStudio\props\developer-build-paths.props` and reload Visual Studio).
+   The G3D sample project "starter" include this property sheet automatically.
+
+
+### macOS and Linux
+
+1. Install clang++, and Python 3.10.4 if you wish to use our `icompile` build system for your own programs.
+2. Add the environment variable assignments from Listing [macosvars2] to your `~/.bashrc` file
+3. Ensure that your `~/.bash_profile` contains the line `source ~/.bashrc`
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ bash
+export g3d=### root of your precompiled G3D build ###
+export G3D10DATA=$g3d/data-files
+export INCLUDE=$g3d/include:$INCLUDE
+export LIBRARY=$g3d/lib:$g3d/bin:$LIBRARY
+export PATH=$g3d/bin:$PATH
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[Listing [macosvars2]: macOS environment variable assignments for `~/.bashrc`]
+
+
+
+Building Documentation
+-----------------------------------------------------------------
+
+The G3D documentation for the subversion top of tree is available online at
+https://casual-effects.com/g3d/G3D10/build/manual/index.html.
+
+You can build local copy of the documentation as well if you wish. To do so, you'll need:
+
+1. [Doxygen 1.8.0 or later](http://www.doxygen.org target="_blank")
+  - on Windows, add the install directory to your `PATH` variable
+  - on macOS, add `/Applications/Doxygen.app/Contents/Resources/` to your `PATH` variable
+2. LaTeX
+  - use [MikTex](http://miktex.org/ target="_blank") for Windows
+  - for all other platforms, use [TexLive](https://www.tug.org/texlive target="_blank")
+3. [Ghostscript](http://pages.cs.wisc.edu/~ghost/ target="_blank")
+
+With those tools installed, run `buildg3d doc`.
+
+
+
+<style>
+    body {
+        max-width: 50em
+    }
+
+    .md code, .md pre.tilde {
+        background: #F4F4F4
+    }
+</style>
+<!-- Markdeep: --><style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style><script src="markdeep.min.js" charset="utf-8"></script><script src="https://morgan3d.github.io/markdeep/latest/markdeep.min.js" charset="utf-8"></script><script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>

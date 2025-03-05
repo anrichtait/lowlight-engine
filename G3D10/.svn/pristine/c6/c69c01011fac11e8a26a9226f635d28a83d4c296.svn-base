@@ -1,0 +1,29 @@
+<b>What antialiasing methods does G3D support?</b>
+
+FXAA 13 high and low quality are available in G3D::Film​ and enabled by default (see the Camera
+dialog window)
+
+TAA is available on G3D::Film (see the Camera dialog window). There is a known bug where it
+flips the screen upside down in VR, but it works well in other cases. The usual caveats about
+TAA apply.
+
+You can create a MSAA framebuffer, but the deferred shading pass doesn't natively support it. I
+usually brute force supersample "FSAA" when I want deferred shading with multiple true samples
+per pixel, since once you've given up performance it is easier to go that route.
+
+There's also a post-filter radius that you can set in Film which simply blurs by a radial PSF
+of that radius. I sometimes set it to 0.5 pixels to really crush aliasing for videos, where
+MPEG compression does bad things with aliasing.
+
+Ambient occlusion has its own built-in TAA for denoising.
+
+The rendering passes prefilter normals and materials as well to prevent aliasing before
+shading.
+
+Shadow maps use PCF and multi-tap filtering. You can also force variance shadow maps, which
+prefilter to avoid aliasing. These have some known light leaking problems. G3D typically uses
+them only for shadows from transparent objects.
+
+If you're using the OpenGL RenderDevice, then you can enable OpenGL polygon and line
+antialiasing through OpenGL. I don't recommend this because that kind of fixed function
+support is disappearing from GPUs and other graphics APIs.

@@ -1,0 +1,15 @@
+ArticulatedModel::Specification {
+    filename = "bricks.zip/gemBrick.obj";
+    // Shrink slightly too much to avoid z-fighting
+    scale = 0.009999;
+     cleanGeometrySettings = ArticulatedModel::CleanGeometrySettings {
+        forceVertexMerging = true;
+        allowVertexMerging = true;
+        forceComputeNormals = true;
+        forceComputeTangents = false;
+        maxSmoothAngleDegrees = 10;
+     };
+     preprocess = {
+        moveCenterToOrigin();
+    };
+}

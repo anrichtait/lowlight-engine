@@ -1,0 +1,354 @@
+#version 400
+// Planet implicit surface ray tracer
+// by Morgan McGuire, @CasualEffects, http://casual-effects.com
+//
+// Based on https://www.shadertoy.com/view/lt3XDM
+
+#include "common.glsl"
+
+uniform samplerCube ambientCubeMap;
+mat3                planetRotation;
+
+out Color4          fragColor;
+
+
+/**
+ Conservative distance estimator for the entire scene. Returns true if
+ the surface is closer than distance. Always updates distance and material.
+ The material code compiles out when called from a context that ignores it.
+*/
+bool scene(Point3 X, inout float distance, inout Material material, const bool shadow) { 
+    if (debugCloudsMode) {
+        float t = length(X) - cloudMinRadius;
+        if (t < distance) {
+            distance = t;
+            material.color = Color3(0.2, 0.8, 0.5);
+	        return true;
+        } else {
+            return false;
+        }
+    }
+    
+    Material planetMaterial;
+    
+    // Move to the planet's reference frame (ideally, we'd just trace in the 
+    // planet's reference frame and avoid these operations per distance
+    // function evaluation, but this makes it easy to integrate with a
+    // standard framework)
+    X = planetRotation * (X - planetCenter);
+    
+    // Compute t = distance estimator to the planet surface using a spherical height field, 
+    // in which elevation = radial distance
+    //
+	// Estimate *conservative* distance as always less than that to the bounding sphere
+    // (i.e., push down). Work on range [0, 1], and then scale by planet radius at the end
+    
+    // Use a stable surface location rather than sampling noise in 3D space
+    Point3 surfaceLocation = normalize(X); 
+    
+	float mountain = pow3(1.0 - noise(surfaceLocation * 4.0, 5)) * 0.18 + 0.82; 
+    const float water = 0.85;
+    float elevation = mountain;
+    
+    Vector3 normal = normalize(cross(dFdx(surfaceLocation * mountain), dFdy(surfaceLocation * -mountain)));
+    
+    // Don't pay for fine details in the shadow tracing pass
+	if (! shadow) {
+        if (elevation < water) {
+            float relativeWaterDepth = min(1.0, (water - mountain) * 30.0);
+            const float waveMagnitude = 0.0008;
+            const float waveLength = 0.008;
+
+            // Create waves. Shallow-water waves conform to coasts. Deep-water waves follow global wind patterns.
+            const Color3 shallowWaterColor = Color3(0.4, 1.0, 1.9);
+            // How much the waves conform to beaches
+            const float shallowWaveRefraction = 4.0;        
+            float shallowWavePhase = (surfaceLocation.y - mountain * shallowWaveRefraction) * (1.0 / waveLength);
+
+            const Color3 deepWaterColor = Color3(0, 0.1, 0.7);
+            float deepWavePhase    = (atan(surfaceLocation.z, surfaceLocation.x) + noise1(surfaceLocation * 15.0) * 0.075) * (1.5 / waveLength);
+
+            // This is like a lerp, but it gives a large middle region in which both wave types are active at nearly full magnitude
+            float wave =  (cos(shallowWavePhase + g3d_SceneTime * 1.75) * sqrt(1.0 - relativeWaterDepth) + 
+                           cos(deepWavePhase + g3d_SceneTime * 2.2) * 2.5 * (1.0 - abs(surfaceLocation.y)) * square(relativeWaterDepth)) *
+                waveMagnitude;
+
+            elevation = water + wave;
+
+            // Set material, making deep water darker
+            planetMaterial = Material(mix(shallowWaterColor, deepWaterColor, pow(relativeWaterDepth, 0.4)), 0.5 * relativeWaterDepth, 0.7);
+
+            // Lighten polar water color
+            planetMaterial.color = mix(planetMaterial.color, Color3(0.6, 1.0, 0.9) * 0.75, square(clamp((abs(surfaceLocation.y) - 0.667) * 3.0, 0.0, 1.0)));            
+        } else {
+            float materialNoise = noise1(surfaceLocation * 200.0);
+
+            float slope = clamp(2.0 * (1.0 - dot(normal, surfaceLocation)), 0.0, 1.0);
+
+            bool iceCap     = abs(surfaceLocation.y) + materialNoise * 0.2 > 0.98; 
+            bool rock       = (elevation + materialNoise * 0.1 > 0.94) || (slope > 0.3);
+            bool mountainTop = (elevation + materialNoise * 0.05 - slope * 0.05) > (planetMaxRadius * 0.92);
+
+            // Beach
+            bool sand        = (elevation < water + 0.005) && (noise1(surfaceLocation * 8.0) > 0.7);
+
+            // Equatorial desert
+            sand = sand || (elevation < 0.89) && 
+                (noise1(surfaceLocation * 1.5) * 0.05 + noise1(surfaceLocation * 73.0) * 0.15 > abs(surfaceLocation.y));
+
+            if (rock) {
+                // Rock
+                planetMaterial = Material(Color3(0.6, 0.35, 0.1), 0.0, 0.0);
+            } else {
+                // Trees
+                planetMaterial = Material(Color3(0.05, 0.7, 0.01), 0.0, 0.1);
+            }
+
+            if (iceCap || mountainTop) {
+                // Ice (allow to slightly exceed physical conservation in the blue channel
+                // to simulate subsurface effects)
+                planetMaterial = Material(Color3(0.85, 1.0, 1.1), 0.2, 0.25);
+            } else if (! rock && sand) {
+                planetMaterial = Material(Color3(1.0, 1.0, 0.85), 0.0, 0.0);
+            } else if (! rock && (iResolution.x > 600.0)) {
+                // High frequency bumps for trees when in high resolution
+                elevation += noise1(surfaceLocation * 150.0) * 0.007;
+            }
+
+            // Add high-frequency material detail
+            if (! sand && ! iceCap) {
+                planetMaterial.color *= mix(noise1(surfaceLocation * 256.0), 1.0, 0.4);
+            }
+        }
+    }
+        
+    //planetMaterial.color=vec3(1);
+    elevation *= planetMaxRadius;
+    
+    float sampleElevation = length(X);
+    float t = sampleElevation - elevation;
+    
+    // Be a little more conservative because a radial heightfield is not a great
+    // distance estimator.
+    t *= 0.8;
+        
+    // Compute output variables
+    bool closer = (t < distance);       
+    if (closer) { material = planetMaterial; distance = t; }
+    return closer;    
+}
+
+
+// Version that ignores materials
+bool scene(Point3 X, inout float distance) {
+    Material ignoreMaterial;
+    return scene(X, distance, ignoreMaterial, true); 
+}
+
+float distanceEstimator(Point3 X) {
+    float d = inf;
+    Material ignoreMaterial;
+    scene(X, d, ignoreMaterial, false);
+    return d;
+}
+
+// Weird structure needed because WebGL does not support BREAK in a FOR loop
+bool intersectSceneLoop(Ray R, float minDist, float maxDist, inout Surfel surfel) {
+    const int maxIterations = 75;
+    
+    // Making this too large causes bad results because we use
+    // screen-space derivatives for normal estimation.    
+    const float closeEnough = 0.0011;
+
+    const float minStep = closeEnough;
+    float closest = inf;
+    float tForClosest = 0.0;
+    float t = minDist;
+    
+    for (int i = 0; (i < maxIterations) && (t < maxDist); ++i) {
+        surfel.position = R.direction * t + R.origin;
+
+        float dt = inf;
+        scene(surfel.position, dt);
+        if (dt < closest) {            
+	        closest = dt;
+            tForClosest = t;            
+        }
+        
+        t += max(dt, minStep);
+        if (dt < closeEnough) {
+            return true;
+        }
+    }    
+
+    // "Screen space" optimization from Mercury for shading a reasonable
+    // point in the event of failure due to iteration count
+    if (closest < closeEnough * 5.0) {
+        surfel.position = R.direction * tForClosest + R.origin;
+        return true;
+    }
+    
+    return false;
+}
+
+
+bool intersectScene(Ray R, float minDist, float maxDist, inout Surfel surfel) {
+    if (intersectSceneLoop(R, minDist, maxDist, surfel)) {
+        const float eps = 0.0001;
+        
+        float d = inf;
+        scene(surfel.position, d, surfel.material, false);
+        surfel.normal =
+            normalize(Vector3(distanceEstimator(surfel.position + Vector3(eps, 0, 0)), 
+                              distanceEstimator(surfel.position + Vector3(0, eps, 0)), 
+                              distanceEstimator(surfel.position + Vector3(0, 0, eps))) - 
+                              d);
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+bool shadowed(Ray R, float minDist, float maxDist) {
+    const int maxIterations = 30;    
+    const float closeEnough = 0.0011 * 4.0;
+    const float minStep = closeEnough;
+    float t = 0.0;
+    
+    for (int i = 0; (i < maxIterations) && (t < maxDist); ++i) {
+        float dt = inf;
+        scene(R.direction * t + R.origin, dt);        
+        t += max(dt, minStep);
+        if (dt < closeEnough) {
+            return true;
+        }
+    }
+    
+    return false;
+}
+
+
+
+void computeReflectivities(Material material, out Color3 p_L, out Color3 p_G, out float glossyExponent) {
+	p_L = mix(material.color, Color3(0.0), material.metal);
+	p_G = mix(Color3(0.04), material.color, material.metal);
+	glossyExponent = exp2(material.smoothness * 15.0);
+}
+
+
+Radiance3 shade(Surfel surfel, Vector3 w_i, Vector3 w_o, Biradiance3 B_i) {
+	Vector3 n   = surfel.normal;
+    
+    float cos_i = dot(n, w_i);
+    if (cos_i < 0.0) {
+        // Backface, don't bother shading or shadow casting
+        return Radiance3(0.0);
+    }
+    
+    // Cast a shadow ray
+    Ray shadowRay = Ray(surfel.position + (surfel.normal + w_o) * 0.004, w_i);
+    float shadowDist, ignore;
+    // Find the outer bounding sphere on the atmosphere and trace shadows up to it
+    intersectSphere(planetCenter, planetMaxRadius, shadowRay, shadowDist, ignore);
+    if (shadowed(shadowRay, 0.0, shadowDist)) {
+        return Radiance3(0.0);
+    }
+    
+	Color3 p_L, p_G;
+	float glossyExponent;
+	computeReflectivities(surfel.material, p_L, p_G, glossyExponent);
+
+	// Compute the light contribution from the directional source
+	Vector3 w_h = normalize(w_i + w_o);
+	return (cos_i * invPi) * B_i * 
+		// Lambertian
+		(p_L + 
+
+		// Glossy
+         p_G * (pow(max(0.0, dot(n, w_h)), glossyExponent) * (glossyExponent + 8.0) * (1.0 / 14.0)));
+}
+
+
+/** Returns true if the world-space ray hits the planet */
+bool renderPlanet(Ray eyeRay, float minDistanceToPlanet, float maxDistanceToPlanet, inout Radiance3 L_o, inout Point3 hitPoint) {    
+    Surfel surfel;
+    
+    if (intersectScene(eyeRay, minDistanceToPlanet, maxDistanceToPlanet, surfel)) {
+        // Render the planet
+        Radiance3 L_directOut = shade(surfel, w_i, -eyeRay.direction, B_i);
+
+        // Clouds vary fairly slowly in elevation, so we can just measure at the
+        // surface as an estimate of the density above the surface
+        float cloudShadow = pow4(1.0 - clamp(cloudDensity(surfel.position), 0.0, 1.0));
+        
+        // "Ambient"
+        Irradiance3 E_indirectIn = max(Irradiance3(0), Irradiance3(0.5) - 0.3 * Irradiance3(surfel.normal.yxx)); 
+        Radiance3 L_indirectOut = 
+            mix(E_indirectIn * surfel.material.color,
+                mix(Color3(1.0), surfel.material.color, surfel.material.metal) * pow3(
+                   texture(ambientCubeMap, reflect(w_i, surfel.normal)).rgb
+   
+                ) * 2.5, surfel.material.smoothness) * (1.0 / pi);
+        
+        hitPoint = surfel.position;
+        L_o = (L_directOut + L_indirectOut) * cloudShadow;
+            
+        return true;
+    } else {
+        // Missed the bounding sphere or final ray-march
+        return false;
+    }    
+}
+
+
+void main() {
+	// Rotate over time
+	float yaw   = -((iMouse.x / iResolution.x) * 2.5 - 1.25) + (autoRotate ? -g3d_SceneTime * 0.02 : 0.0);
+	float pitch = ((iMouse.y > 0.0 ? iMouse.y : iResolution.y * 0.3) / iResolution.y) * 2.5 - 1.25;
+ 	planetRotation = 
+    	Matrix3(cos(yaw), 0, -sin(yaw), 0, 1, 0, sin(yaw), 0, cos(yaw)) *
+    	Matrix3(1, 0, 0, 0, cos(pitch), sin(pitch), 0, -sin(pitch), cos(pitch));
+    
+    Vector2 invResolution = 1.0 / iResolution.xy;
+	
+	// Outgoing light
+	Radiance3 L_o;
+	
+	Surfel surfel;	
+	
+	Ray eyeRay = Ray(Point3(0.0, 0.0, 5.0), 
+        normalize(Vector3((gl_FragCoord.xy - iResolution.xy / 2.0) * vec2(1, -1), iResolution.y / (-2.0 * tan(verticalFieldOfView / 2.0)))));
+	    
+    Point3 hitPoint;    
+    float minDistanceToPlanet, maxDistanceToPlanet;
+    
+    bool hitBounds = intersectSphere(planetCenter, planetMaxRadius, eyeRay, minDistanceToPlanet, maxDistanceToPlanet);
+
+    if (hitBounds && renderPlanet(eyeRay, minDistanceToPlanet, maxDistanceToPlanet, L_o, hitPoint)) {
+        // Tint planet with atmospheric scattering
+        L_o = mix(L_o, atmosphereColor, 0.1 + min(0.8, square(1.0 - (hitPoint.z - planetCenter.z) * (1.0 / planetMaxRadius))));
+        // Update distance
+        maxDistanceToPlanet = min(maxDistanceToPlanet, dot(eyeRay.direction, hitPoint - eyeRay.origin));
+    } else {
+        // Background starfield. Make 2-pixel clumps so that FXAA doesn't erase them
+        float galaxyClump = (pow3(noise1(gl_FragCoord.xy * (30.0 * invResolution.x))) * 0.5 +
+            pow5(noise1(100.0 + gl_FragCoord.xy * (15.0 * invResolution.x)))) / 1.5;
+        L_o = Color3(galaxyClump * pow(hash(floor(gl_FragCoord.xy * 0.5)), 1500.0) * 180.0);
+        
+        // Color stars
+        L_o.r *= sqrt(noise1(gl_FragCoord.xy) * 1.2);
+        L_o.g *= sqrt(noise1(gl_FragCoord.xy * 4.0));
+        
+        // Twinkle
+        vec2 delta = (gl_FragCoord.xy - iResolution.xy * 0.5) * invResolution.y * 1.2;
+        float atmosphereRadialAttenuation = min(1.0, 0.057 * pow8(max(0.0, 1.0 - (length(delta) - 0.9) / 0.9)));
+        
+        // Gradient around planet
+        float radialNoise = mix(1.0, noise1(normalize(delta) * 20.0 + g3d_SceneTime * 0.5), 0.2);
+        L_o += radialNoise * atmosphereColor * atmosphereRadialAttenuation;
+    }   
+        
+	fragColor.rgb = L_o;
+    fragColor.a   = maxDistanceToPlanet;
+}

@@ -1,0 +1,25 @@
+#version 440
+/**
+  \file data-files/shader/PointSurface/PointSurface_render.pix
+
+  G3D Innovation Engine http://casual-effects.com/g3d
+  Copyright 2000-2019, Morgan McGuire
+  All rights reserved
+  Available under the BSD License
+*/
+#include <g3dmath.glsl>
+
+/** LOD is exponential in this value (like MIP maps) */
+#expect LOD "int"
+
+in  Radiance3       pointEmission;
+
+#if RENDER_AS_DISK
+    in  Point2      gl_PointCoord;
+#endif
+
+out Radiance4       result;
+
+void main() {    
+    result = vec4(pointEmission, 1.0);
+}

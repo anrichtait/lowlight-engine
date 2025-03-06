@@ -1,3 +1,4 @@
+
 # ==================================================
 # Folders to Ignore
 # ==================================================
@@ -14,6 +15,10 @@ tmp/
 /G3D10/manual/
 /G3D10/bin/
 /G3D10/external/fmod/
+/G3D10/external/tbb/build/linux_x86_64_gcc_cc14.2.1_libc2.41_kernel6.12.17_debug/
+/G3D10/temp/
+/G3D10/G3D-base.lib/source/generated/
+/G3D10/build/
 
 # ==================================================
 # Files to Ignore
@@ -27,6 +32,26 @@ tmp/
 *.tmp
 .DS_Store
 CMakeCache.txt
+/G3D10/G3D-base.lib/include/G3D-base/ImageFormat.h
+/G3D10/G3D-base.lib/source/ImageFormat.cpp
+/G3D10/external/python/include/pyconfig.h
+/G3D10/external/tbb/build/Makefile.gcc
+/G3D10/G3D-app.lib/ice-stats.csv
+/G3D10/G3D-base.lib/ice-stats.csv
+/G3D10/G3D-gfx.lib/ice-stats.csv
+/G3D10/external/assimp.lib/ice-stats.csv
+/G3D10/external/civetweb.lib/ice-stats.csv
+/G3D10/external/enet.lib/ice-stats.csv
+/G3D10/external/freeimage.lib/ice-stats.csv
+/G3D10/external/glew.lib/ice-stats.csv
+/G3D10/external/glfw.lib/ice-stats.csv
+/G3D10/external/nfd.lib/ice-stats.csv
+/G3D10/external/qrencode.lib/ice-stats.csv
+/G3D10/external/sqlite3.lib/ice-stats.csv
+/G3D10/external/tbb/build/linux_x86_64_gcc_cc14.2.1_libc2.41_kernel6.12.17_release/
+/G3D10/external/zip.lib/ice-stats.csv
+/G3D10/external/zlib.lib/ice-stats.csv
+/G3D10/tools/viewer/ice-stats.csv
 
 # ==================================================
 # Emacs
